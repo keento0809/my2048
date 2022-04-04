@@ -58,3 +58,13 @@ body {
 .playModeMenu.active {
   display: block;
 }
+
+.overlay {
+  opacity: 0;
+}
+
+.backdrop:hover .overlay {
+  opacity: 1;
+  z-index: 5;
+  transition: ease-in-out;
+}

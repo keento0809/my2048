@@ -3,6 +3,7 @@ const listItems = document.querySelectorAll(".sideBar__listItem");
 const contents = document.querySelectorAll(".content");
 
 const startPlayButton = document.querySelector("#startPlay");
+const startPlayButtonInOverlay = document.querySelector("#startPlayInOverlay");
 const mainDefaultMode = document.querySelector(".main__container");
 const mainPlayMode = document.querySelector(".main__container.playMode");
 
@@ -17,7 +18,9 @@ const playModeResult = document.querySelector(".playMode__result");
 
 const toggleDarkMode = document.querySelector("#toggleDarkMode");
 const html = document.querySelector("html");
-console.log(html);
+
+const overlays = document.querySelectorAll(".overlay");
+console.log(overlays);
 
 let playModeMenuIndex = 0;
 let resultScore = 0;
@@ -78,12 +81,17 @@ function handleToggleDarkMode() {
   html.classList.toggle("dark");
 }
 
+function handleShowOverlay() {
+  console.log("hover now");
+}
+
 // Hook up the event
 listItems.forEach((listItem) =>
   listItem.addEventListener("click", handleSwitchMenu)
 );
 
 startPlayButton.addEventListener("click", handleToggleMainContainer);
+startPlayButtonInOverlay.addEventListener("click", handleToggleMainContainer);
 
 backToTopButtons.forEach((button) =>
   button.addEventListener("click", handleBackToTop)
@@ -97,3 +105,7 @@ nextButtons.forEach((button) =>
 testGenerate.addEventListener("click", handleGenerateScore);
 
 toggleDarkMode.addEventListener("click", handleToggleDarkMode);
+
+overlays.forEach((overlay) =>
+  overlay.addEventListener("mousemove", handleShowOverlay)
+);
