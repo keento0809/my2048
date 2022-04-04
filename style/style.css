@@ -1,33 +1,19 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-body {
-  /* background: rgb(243, 92, 210); */
-}
-
 .container {
   width: 95%;
   max-width: 600px;
   margin: 0 auto;
   padding: 0.5rem 0;
-  /* margin-bottom: 1rem; */
-  /* background: #fff; */
-  /* border: 1px solid #333; */
   border-radius: 8px;
 }
 
 .main__container,
 .main__container.playMode {
-  /* display: flex; */
-  /* flex-direction: row; */
   min-height: 200px;
 }
 
 .main__container.hidden,
 .main__container.playMode.hidden {
   display: none;
-  /* flex-direction: row; */
 }
 
 .contents {
@@ -47,10 +33,6 @@ body {
   border-radius: 8px;
 }
 
-.sideBar__listItem.active {
-  /* background: #beff8a; */
-}
-
 .playModeMenu {
   display: none;
 }
@@ -67,4 +49,25 @@ body {
   opacity: 1;
   z-index: 5;
   transition: 0.7s;
+}
+
+.gameTable {
+  color: #333;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.td {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  /* padding: 1.8rem; */
 }

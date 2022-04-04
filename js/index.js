@@ -20,7 +20,9 @@ const toggleDarkMode = document.querySelector("#toggleDarkMode");
 const html = document.querySelector("html");
 
 const overlays = document.querySelectorAll(".overlay");
-console.log(overlays);
+
+const gameTable = document.querySelector(".gameTable");
+const startNewGame = document.querySelector("#startNewGame");
 
 let playModeMenuIndex = 0;
 let resultScore = 0;
@@ -82,10 +84,50 @@ function handleToggleDarkMode() {
 }
 
 function handleShowOverlay() {
-  console.log("hover now");
+  // console.log("hover now");
+}
+
+let scoreArray = [];
+
+function generateRandomIndex(val) {
+  const randomNum = Math.floor(Math.random() * (val * val)) + 1;
+  return randomNum;
+}
+
+// create new game table
+function handleCreateGameTable(num) {
+  for (let i = 0; i < num * num; i++) {
+    let td = document.createElement("div");
+    td.textContent = 0;
+    td.classList.add(`td`);
+    gameTable.append(td);
+    scoreArray.push(td);
+  }
+}
+
+// start game
+function handleStartGame(num) {
+  const firstNum = generateRandomIndex(num);
+  if (scoreArray[firstNum].textContent == 0)
+    scoreArray[firstNum].textContent = 2;
+}
+
+function handleSwipeRight(num) {
+  for (let i = 0; i < num * num; i++) {
+    if (i % 4 === 0) {
+      let totalOne = [i];
+      let totalTwo = s;
+    }
+  }
+}
+
+function handleInitialization(num) {
+  handleCreateGameTable(num);
 }
 
 // Hook up the event
+window.addEventListener("DOMContentLoaded", () => handleInitialization(4));
+
 listItems.forEach((listItem) =>
   listItem.addEventListener("click", handleSwitchMenu)
 );
@@ -109,3 +151,5 @@ toggleDarkMode.addEventListener("click", handleToggleDarkMode);
 overlays.forEach((overlay) =>
   overlay.addEventListener("mousemove", handleShowOverlay)
 );
+
+startNewGame.addEventListener("click", () => handleStartGame(4));
