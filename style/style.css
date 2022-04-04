@@ -66,5 +66,5 @@ body {
 .backdrop:hover .overlay {
   opacity: 1;
   z-index: 5;
-  transition: ease-in-out;
+  transition: 0.7s;
 }
