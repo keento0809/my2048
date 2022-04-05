@@ -12,7 +12,6 @@ const playModeMenus = document.querySelectorAll(".playModeMenu");
 const backToTopButtons = document.querySelectorAll(".backToTop");
 const nextButtons = document.querySelectorAll(".next");
 
-// const testGenerate = document.querySelector("#testGenerate");
 const playModePlaying = document.querySelector(".playMode__playing");
 const playModeResult = document.querySelector(".playMode__result");
 
@@ -34,6 +33,7 @@ const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
 
 // global variables
+let allTds;
 let playModeMenuIndex = 0;
 let totalScore = 0;
 const lengthOfSquare = 4;
@@ -80,16 +80,6 @@ function handleNextPlayMenu() {
   playModeMenus[playModeMenuIndex].classList.add("active");
 }
 
-function handleGenerateScore() {
-  const randomScore = Math.floor(Math.random() * 100000) + 1;
-  resultScore = randomScore;
-
-  const showScore = document.createElement("p");
-  showScore.classList.add("dark:text-white");
-  showScore.textContent = `Your score is ${resultScore}!!`;
-  playModePlaying.append(showScore);
-}
-
 function handleToggleDarkMode() {
   html.classList.toggle("dark");
 }
@@ -125,8 +115,7 @@ function handleCreateGameTable(num) {
   for (let i = 0; i < num * num; i++) {
     let td = document.createElement("div");
     td.textContent = 0;
-    td.classList.add(`td`);
-    td.classList.add("dark:text-slate-300");
+    td.classList.add("td", "dark:text-slate-300");
     gameTable.append(td);
     scoreArray.push(td);
   }
@@ -137,15 +126,13 @@ function handleStartGame(num) {
   console.log("handle start ...!!");
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
-  // startNewGameBtn.setAttribute("disabled", "true");
-  // resetGameBtn.setAttribute("disabled", "false");
-  // console.log(resetGameBtn);
+  allTds = document.querySelectorAll(".td");
 }
 
 // swipe right
 function handleSwipeRight(num) {
   for (let i = 0; i < num * num; i++) {
-    if (i % 4 === 0) {
+    if (i % num === 0) {
       console.log(i);
       let totalOne = scoreArray[i].textContent;
       let totalTwo = scoreArray[i + 1].textContent;
@@ -159,17 +146,17 @@ function handleSwipeRight(num) {
       ];
       console.log(row);
 
+      // return the number if it's true (not 0)
       let filteredRow = row.filter((number) => {
-        // console.log(number);
         return number;
       });
 
-      let missing = 4 - filteredRow.length;
-      let zeros = Array(missing).fill(0);
-      console.log(zeros);
+      let numberOfZeroInRow = num - filteredRow.length;
+      let zeros = Array(numberOfZeroInRow).fill(0);
+      console.log(zeros, filteredRow);
 
+      // create new array combining two arrays (zeros,filteredRow) without changing original ones
       let newRow = zeros.concat(filteredRow);
-      // console.log(newRow);
 
       scoreArray[i].textContent = newRow[0];
       scoreArray[i + 1].textContent = newRow[1];
@@ -201,8 +188,8 @@ function handleSwipeLeft(num) {
         return number;
       });
 
-      let missing = 4 - filteredRow.length;
-      let zeros = Array(missing).fill(0);
+      let numberOfZeroInRow = lengthOfSquare - filteredRow.length;
+      let zeros = Array(numberOfZeroInRow).fill(0);
 
       let newRow = filteredRow.concat(zeros);
 
@@ -233,8 +220,8 @@ function handleSwipeDown(num) {
       console.log(number);
       return number;
     });
-    let missing = 4 - filteredColumn.length;
-    let zeros = Array(missing).fill(0);
+    let numberOfZeroInRow = lengthOfSquare - filteredColumn.length;
+    let zeros = Array(numberOfZeroInRow).fill(0);
     let newColumn = zeros.concat(filteredColumn);
 
     scoreArray[i].textContent = newColumn[0];
@@ -263,8 +250,8 @@ function handleSwipeUp(num) {
       console.log(number);
       return number;
     });
-    let missing = 4 - filteredColumn.length;
-    let zeros = Array(missing).fill(0);
+    let numberOfZeroInRow = lengthOfSquare - filteredColumn.length;
+    let zeros = Array(numberOfZeroInRow).fill(0);
     let newColumn = filteredColumn.concat(zeros);
 
     scoreArray[i].textContent = newColumn[0];
@@ -281,6 +268,7 @@ function combineRow() {
       let combinedTotal =
         parseInt(scoreArray[i].textContent) +
         parseInt(scoreArray[i + 1].textContent);
+      console.log(scoreArray[i]);
       scoreArray[i].textContent = combinedTotal;
       scoreArray[i + 1].textContent = 0;
       totalScore += combinedTotal;
@@ -292,6 +280,8 @@ function combineRow() {
 // combine each columns
 function combineColumn(num) {
   for (let i = 0; i < 12; i++) {
+    // next three of them ??
+    // next two of them
     if (scoreArray[i].textContent === scoreArray[i + num].textContent) {
       let combinedTotal =
         parseInt(scoreArray[i].textContent) +
@@ -301,14 +291,6 @@ function combineColumn(num) {
       totalScore += combinedTotal;
       totalScoreTextContent.textContent = totalScore;
     }
-  }
-}
-
-function control(e, num) {
-  if (e.keyCode === 39) {
-    keyRight(num);
-  } else if (e.keyCode === 37) {
-    keyLeft(num);
   }
 }
 
@@ -350,6 +332,7 @@ function checkForWin() {
   }
 }
 
+// check for the status if you lose the game or not
 function checkForLose() {
   let numOfZeros = 0;
   for (let i = 0; i < scoreArray.length; i++) {
@@ -396,18 +379,18 @@ nextButtons.forEach((button) =>
   button.addEventListener("click", handleNextPlayMenu)
 );
 
-// testGenerate.addEventListener("click", handleGenerateScore);
-
 toggleDarkMode.addEventListener("click", handleToggleDarkMode);
 
 overlays.forEach((overlay) =>
   overlay.addEventListener("mousemove", handleShowOverlay)
 );
 
-startNewGameBtn.addEventListener("click", () => handleStartGame(4));
-resetGameBtn.addEventListener("click", () => handleResetGame(4));
+startNewGameBtn.addEventListener("click", () =>
+  handleStartGame(lengthOfSquare)
+);
+resetGameBtn.addEventListener("click", () => handleResetGame(lengthOfSquare));
 // temporary changing code
-swipeRightBtn.addEventListener("click", () => keyRight(4));
-swipeLeftBtn.addEventListener("click", () => keyLeft(4));
-swipeUpBtn.addEventListener("click", () => keyUp(4));
-swipeDownBtn.addEventListener("click", () => keyDown(4));
+swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
+swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
+swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
+swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
