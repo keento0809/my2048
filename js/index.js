@@ -12,7 +12,7 @@ const playModeMenus = document.querySelectorAll(".playModeMenu");
 const backToTopButtons = document.querySelectorAll(".backToTop");
 const nextButtons = document.querySelectorAll(".next");
 
-const testGenerate = document.querySelector("#testGenerate");
+// const testGenerate = document.querySelector("#testGenerate");
 const playModePlaying = document.querySelector(".playMode__playing");
 const playModeResult = document.querySelector(".playMode__result");
 
@@ -24,7 +24,9 @@ const overlays = document.querySelectorAll(".overlay");
 const gameTable = document.querySelector(".gameTable");
 const startNewGameBtn = document.querySelector("#startNewGame");
 const resetGameBtn = document.querySelector("#resetGame");
-const swipeRight = document.querySelector("#swipeRight");
+
+const swipeLeftBtn = document.querySelector("#swipeLeft");
+const swipeRightBtn = document.querySelector("#swipeRight");
 
 const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
@@ -128,8 +130,12 @@ function handleCreateGameTable(num) {
 
 // start game
 function handleStartGame(num) {
+  console.log("handle start ...!!");
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
+  // startNewGameBtn.setAttribute("disabled", "true");
+  // resetGameBtn.setAttribute("disabled", "false");
+  // console.log(resetGameBtn);
 }
 
 // swipe right
@@ -316,8 +322,6 @@ function keyLeft(num) {
   generateRandomIndex(num);
 }
 
-// handleSwipeRight(4);
-
 // check for the number 2048 in the squares to win
 function checkForWin() {
   for (let i = 0; i < scoreArray.length; i++) {
@@ -342,12 +346,16 @@ function handleInitialization(num) {
 }
 
 function handleResetGame(num) {
+  console.log("WTF");
   for (let i = 0; i < num * num; i++) {
     if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
   }
   totalScore = 0;
   totalScoreTextContent.textContent = totalScore;
   resultText.textContent = "";
+  startNewGameBtn.setAttribute("enabled", "enabled");
+  console.log(startNewGameBtn);
+  // resetGameBtn.setAttribute("disabled", "true");
 }
 
 // Hook up the event
@@ -369,7 +377,7 @@ nextButtons.forEach((button) =>
   button.addEventListener("click", handleNextPlayMenu)
 );
 
-testGenerate.addEventListener("click", handleGenerateScore);
+// testGenerate.addEventListener("click", handleGenerateScore);
 
 toggleDarkMode.addEventListener("click", handleToggleDarkMode);
 
@@ -380,4 +388,5 @@ overlays.forEach((overlay) =>
 startNewGameBtn.addEventListener("click", () => handleStartGame(4));
 resetGameBtn.addEventListener("click", () => handleResetGame(4));
 // temporary changing code
-swipeRight.addEventListener("click", () => keyRight(4));
+swipeRightBtn.addEventListener("click", () => keyRight(4));
+swipeLeftBtn.addEventListener("click", () => keyLeft(4));
