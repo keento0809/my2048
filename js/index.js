@@ -27,12 +27,16 @@ const resetGameBtn = document.querySelector("#resetGame");
 
 const swipeLeftBtn = document.querySelector("#swipeLeft");
 const swipeRightBtn = document.querySelector("#swipeRight");
+const swipeUpBtn = document.querySelector("#swipeUp");
+const swipeDownBtn = document.querySelector("#swipeDown");
 
 const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
 
+// global variables
 let playModeMenuIndex = 0;
 let totalScore = 0;
+const lengthOfSquare = 4;
 
 // Build out function
 function handleSwitchMenu() {
@@ -155,15 +159,17 @@ function handleSwipeRight(num) {
       ];
       console.log(row);
 
-      let filteredRow = row.filter((num) => num);
-      console.log(filteredRow);
+      let filteredRow = row.filter((number) => {
+        // console.log(number);
+        return number;
+      });
 
       let missing = 4 - filteredRow.length;
       let zeros = Array(missing).fill(0);
       console.log(zeros);
 
       let newRow = zeros.concat(filteredRow);
-      console.log(newRow);
+      // console.log(newRow);
 
       scoreArray[i].textContent = newRow[0];
       scoreArray[i + 1].textContent = newRow[1];
@@ -190,11 +196,10 @@ function handleSwipeLeft(num) {
       ];
       console.log(row);
 
-      let filteredRow = row.filter((num) => {
-        console.log(num);
-        return num;
+      let filteredRow = row.filter((number) => {
+        console.log(number);
+        return number;
       });
-      console.log(filteredRow);
 
       let missing = 4 - filteredRow.length;
       let zeros = Array(missing).fill(0);
@@ -224,9 +229,9 @@ function handleSwipeDown(num) {
       parseInt(totalFour),
     ];
 
-    let filteredColumn = column.filter((num) => {
-      console.log(num);
-      return num;
+    let filteredColumn = column.filter((number) => {
+      console.log(number);
+      return number;
     });
     let missing = 4 - filteredColumn.length;
     let zeros = Array(missing).fill(0);
@@ -254,9 +259,9 @@ function handleSwipeUp(num) {
       parseInt(totalFour),
     ];
 
-    let filteredColumn = column.filter((num) => {
-      console.log(num);
-      return num;
+    let filteredColumn = column.filter((number) => {
+      console.log(number);
+      return number;
     });
     let missing = 4 - filteredColumn.length;
     let zeros = Array(missing).fill(0);
@@ -284,14 +289,15 @@ function combineRow() {
   }
 }
 
-function combineColumn() {
-  for (let i = 0; i < 15; i++) {
-    if (scoreArray[i].textContent === scoreArray[i + 1].textContent) {
+// combine each columns
+function combineColumn(num) {
+  for (let i = 0; i < 12; i++) {
+    if (scoreArray[i].textContent === scoreArray[i + num].textContent) {
       let combinedTotal =
         parseInt(scoreArray[i].textContent) +
-        parseInt(scoreArray[i + 1].textContent);
+        parseInt(scoreArray[i + num].textContent);
       scoreArray[i].textContent = combinedTotal;
-      scoreArray[i + 1].textContent = 0;
+      scoreArray[i + num].textContent = 0;
       totalScore += combinedTotal;
       totalScoreTextContent.textContent = totalScore;
     }
@@ -306,8 +312,7 @@ function control(e, num) {
   }
 }
 
-// control(4);
-
+// commands
 function keyRight(num) {
   handleSwipeRight(num);
   combineRow();
@@ -319,6 +324,20 @@ function keyLeft(num) {
   handleSwipeLeft(num);
   combineRow();
   handleSwipeLeft(num);
+  generateRandomIndex(num);
+}
+
+function keyUp(num) {
+  handleSwipeUp(num);
+  combineColumn(num);
+  handleSwipeUp(num);
+  generateRandomIndex(num);
+}
+
+function keyDown(num) {
+  handleSwipeDown(num);
+  combineColumn(num);
+  handleSwipeDown(num);
   generateRandomIndex(num);
 }
 
@@ -390,3 +409,5 @@ resetGameBtn.addEventListener("click", () => handleResetGame(4));
 // temporary changing code
 swipeRightBtn.addEventListener("click", () => keyRight(4));
 swipeLeftBtn.addEventListener("click", () => keyLeft(4));
+swipeUpBtn.addEventListener("click", () => keyUp(4));
+swipeDownBtn.addEventListener("click", () => keyDown(4));
