@@ -23,6 +23,9 @@ const overlays = document.querySelectorAll(".overlay");
 
 const gameTable = document.querySelector(".gameTable");
 const startNewGame = document.querySelector("#startNewGame");
+const resetGame = document.querySelector("#resetGame");
+const swipeRight = document.querySelector("#swipeRight");
+console.log(swipeRight);
 
 let playModeMenuIndex = 0;
 let resultScore = 0;
@@ -100,6 +103,7 @@ function handleCreateGameTable(num) {
     let td = document.createElement("div");
     td.textContent = 0;
     td.classList.add(`td`);
+    td.classList.add("dark:text-slate-300");
     gameTable.append(td);
     scoreArray.push(td);
   }
@@ -112,17 +116,111 @@ function handleStartGame(num) {
     scoreArray[firstNum].textContent = 2;
 }
 
+// swipe right
 function handleSwipeRight(num) {
   for (let i = 0; i < num * num; i++) {
     if (i % 4 === 0) {
-      let totalOne = [i];
-      let totalTwo = s;
+      console.log(i);
+      let totalOne = scoreArray[i].textContent;
+      let totalTwo = scoreArray[i + 1].textContent;
+      let totalThree = scoreArray[i + 2].textContent;
+      let totalFour = scoreArray[i + 3].textContent;
+      let row = [
+        parseInt(totalOne),
+        parseInt(totalTwo),
+        parseInt(totalThree),
+        parseInt(totalFour),
+      ];
+      console.log(row);
+
+      let filteredRow = row.filter((num) => num);
+      console.log(filteredRow);
+
+      let missing = 4 - filteredRow.length;
+      let zeros = Array(missing).fill(0);
+      console.log(zeros);
+
+      let newRow = zeros.concat(filteredRow);
+      console.log(newRow);
+
+      scoreArray[i].textContent = newRow[0];
+      scoreArray[i + 1].textContent = newRow[1];
+      scoreArray[i + 2].textContent = newRow[2];
+      scoreArray[i + 3].textContent = newRow[3];
     }
   }
 }
 
+// swipe Left
+function handleSwipeLeft(num) {
+  for (let i = 0; i < num * num; i++) {
+    if (i % 4 === 0) {
+      console.log(i);
+      let totalOne = scoreArray[i].textContent;
+      let totalTwo = scoreArray[i + 1].textContent;
+      let totalThree = scoreArray[i + 2].textContent;
+      let totalFour = scoreArray[i + 3].textContent;
+      let row = [
+        parseInt(totalOne),
+        parseInt(totalTwo),
+        parseInt(totalThree),
+        parseInt(totalFour),
+      ];
+      console.log(row);
+
+      let filteredRow = row.filter((num) => num);
+      console.log(filteredRow);
+
+      let missing = 4 - filteredRow.length;
+      let zeros = Array(missing).fill(0);
+      console.log(zeros);
+
+      let newRow = filteredRow.concat(zeros);
+      console.log(newRow);
+
+      scoreArray[i].textContent = newRow[0];
+      scoreArray[i + 1].textContent = newRow[1];
+      scoreArray[i + 2].textContent = newRow[2];
+      scoreArray[i + 3].textContent = newRow[3];
+    }
+  }
+}
+
+function combineRow() {
+  for (let i = 0; i < 15; i++) {
+    if (scoreArray[i].textContent === scoreArray[i + 1].textContent) {
+      let combinedTotal =
+        parseInt(scoreArray[i].textContent) +
+        parseInt(scoreArray[i + 1].textContent);
+      scoreArray[i].textContent = combinedTotal;
+      scoreArray[i + 1].textContent = 0;
+    }
+  }
+}
+
+function control(e) {
+  if (e.keyCode === 39) {
+    keyRight();
+  }
+}
+
+function keyRight() {
+  handleSwipeRight();
+  combineRow();
+  handleSwipeRight();
+  handleCreateGameTable();
+}
+
+// handleSwipeRight(4);
+
 function handleInitialization(num) {
   handleCreateGameTable(num);
+}
+
+function handleResetGame(num) {
+  for (let i = 0; i < num * num; i++) {
+    if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
+  }
 }
 
 // Hook up the event
@@ -153,3 +251,6 @@ overlays.forEach((overlay) =>
 );
 
 startNewGame.addEventListener("click", () => handleStartGame(4));
+resetGame.addEventListener("click", () => handleResetGame(4));
+// temporary changing code
+swipeRight.addEventListener("click", () => handleSwipeLeft(4));
