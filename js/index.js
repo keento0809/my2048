@@ -294,15 +294,15 @@ function combineRow(direction) {
 }
 
 // combine each columns
-function combineColumn(num) {
+function combineColumn(num, direction) {
   for (let i = 0; i < 12; i++) {
-    // next three of them ??
-    // next two of them
     if (scoreArray[i].textContent === scoreArray[i + num].textContent) {
       let combinedTotal =
         parseInt(scoreArray[i].textContent) +
         parseInt(scoreArray[i + num].textContent);
-      if (combinedTotal != 0) togglePop(i, false);
+      if (combinedTotal != 0 && direction === "down") togglePop(i, false);
+      else if (combinedTotal != 0 && direction === "up")
+        togglePop(i - num, false);
       scoreArray[i].textContent = combinedTotal;
       scoreArray[i + num].textContent = 0;
       totalScore += combinedTotal;
@@ -328,14 +328,14 @@ function keyLeft(num) {
 
 function keyUp(num) {
   handleSwipeUp(num);
-  combineColumn(num);
+  combineColumn(num, "up");
   handleSwipeUp(num);
   generateRandomIndex(num);
 }
 
 function keyDown(num) {
   handleSwipeDown(num);
-  combineColumn(num);
+  combineColumn(num, "down");
   handleSwipeDown(num);
   generateRandomIndex(num);
 }
