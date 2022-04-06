@@ -103,7 +103,6 @@ let scoreArray = [];
 function scorePop() {
   totalScore.classList.add("pop");
   setTimeout(() => {
-    console.log("Time is up ...");
     totalScore.classList.remove("pop");
   }, 1000);
 }
@@ -111,7 +110,6 @@ function scorePop() {
 function addPop(index) {
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
-    console.log("Time is up ...");
     scoreArray[index].classList.remove("pop", "bgChange");
   }, 1000);
 }
@@ -119,8 +117,7 @@ function addPop(index) {
 // generate random index and apply that as the hash index
 function generateRandomIndex(val) {
   const randomNum = Math.floor(Math.random() * (val * val));
-  console.log(randomNum);
-  if (scoreArray[randomNum].textContent == 0) {
+  if (scoreArray[randomNum].textContent == "") {
     addPop(randomNum);
     scoreArray[randomNum].textContent = 2;
     checkForLose();
@@ -131,7 +128,9 @@ function generateRandomIndex(val) {
 function handleCreateGameTable(num) {
   for (let i = 0; i < num * num; i++) {
     let td = document.createElement("div");
-    td.textContent = 0;
+    // original code
+    // td.textContent = 0;
+    td.textContent = "";
     td.classList.add("td", "dark:text-slate-300", "tdStyle");
     gameTable.append(td);
     scoreArray.push(td);
@@ -140,7 +139,6 @@ function handleCreateGameTable(num) {
 
 // start game
 function handleStartGame(num) {
-  console.log("handle start ...!!");
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
   allTds = document.querySelectorAll(".td");
@@ -154,7 +152,6 @@ function handleStartGame(num) {
 function handleSwipeRight(num) {
   for (let i = 0; i < num * num; i++) {
     if (i % num === 0) {
-      console.log(i);
       let totalOne = scoreArray[i].textContent;
       let totalTwo = scoreArray[i + 1].textContent;
       let totalThree = scoreArray[i + 2].textContent;
@@ -165,7 +162,7 @@ function handleSwipeRight(num) {
         parseInt(totalThree),
         parseInt(totalFour),
       ];
-      console.log(row);
+      // console.log(row);
 
       // return the number if it's true (not 0)
       let filteredRow = row.filter((number) => {
@@ -173,8 +170,9 @@ function handleSwipeRight(num) {
       });
 
       let numberOfZeroInRow = num - filteredRow.length;
-      let zeros = Array(numberOfZeroInRow).fill(0);
-      console.log(zeros, filteredRow);
+      // original code
+      // let zeros = Array(numberOfZeroInRow).fill(0);
+      let zeros = Array(numberOfZeroInRow).fill("");
 
       // create new array combining two arrays (zeros,filteredRow) without changing original ones
       let newRow = zeros.concat(filteredRow);
@@ -191,7 +189,6 @@ function handleSwipeRight(num) {
 function handleSwipeLeft(num) {
   for (let i = 0; i < num * num; i++) {
     if (i % 4 === 0) {
-      console.log(i);
       let totalOne = scoreArray[i].textContent;
       let totalTwo = scoreArray[i + 1].textContent;
       let totalThree = scoreArray[i + 2].textContent;
@@ -202,15 +199,13 @@ function handleSwipeLeft(num) {
         parseInt(totalThree),
         parseInt(totalFour),
       ];
-      console.log(row);
 
-      let filteredRow = row.filter((number) => {
-        console.log(number);
-        return number;
-      });
+      let filteredRow = row.filter((number) => number);
 
       let numberOfZeroInRow = lengthOfSquare - filteredRow.length;
-      let zeros = Array(numberOfZeroInRow).fill(0);
+      // original code
+      // let zeros = Array(numberOfZeroInRow).fill(0);
+      let zeros = Array(numberOfZeroInRow).fill("");
 
       let newRow = filteredRow.concat(zeros);
 
@@ -239,7 +234,9 @@ function handleSwipeDown(num) {
 
     let filteredColumn = column.filter((number) => number);
     let numberOfZeroInRow = lengthOfSquare - filteredColumn.length;
-    let zeros = Array(numberOfZeroInRow).fill(0);
+    // original code
+    // let zeros = Array(numberOfZeroInRow).fill(0);
+    let zeros = Array(numberOfZeroInRow).fill("");
     let newColumn = zeros.concat(filteredColumn);
 
     scoreArray[i].textContent = newColumn[0];
@@ -264,12 +261,11 @@ function handleSwipeUp(num) {
       parseInt(totalFour),
     ];
 
-    let filteredColumn = column.filter((number) => {
-      console.log(number);
-      return number;
-    });
+    let filteredColumn = column.filter((number) => number);
     let numberOfZeroInRow = lengthOfSquare - filteredColumn.length;
-    let zeros = Array(numberOfZeroInRow).fill(0);
+    // original code
+    // let zeros = Array(numberOfZeroInRow).fill(0);
+    let zeros = Array(numberOfZeroInRow).fill("");
     let newColumn = filteredColumn.concat(zeros);
 
     scoreArray[i].textContent = newColumn[0];
@@ -280,10 +276,10 @@ function handleSwipeUp(num) {
 }
 
 function togglePop(index, isRow) {
+  console.log("Toggling pop now????");
   let val = isRow ? 1 : lengthOfSquare;
   scoreArray[index + val].classList.add("pop", "bgChange-initial");
   setTimeout(() => {
-    console.log("Time is up ...");
     // original code
     scoreArray[index + val].classList.remove("pop", "bgChange-initial");
     // scoreArray[index + val].classList.remove("pop");
@@ -293,17 +289,24 @@ function togglePop(index, isRow) {
 // combine each rows
 function combineRow(direction) {
   for (let i = 0; i < 15; i++) {
-    if (scoreArray[i].textContent === scoreArray[i + 1].textContent) {
-      let combinedTotal =
-        parseInt(scoreArray[i].textContent) +
-        parseInt(scoreArray[i + 1].textContent);
-      if (combinedTotal != 0 && direction === "right") togglePop(i, true);
-      else if (combinedTotal != 0 && direction === "left")
-        togglePop(i - 1, true);
-      scoreArray[i].textContent = combinedTotal;
-      scoreArray[i + 1].textContent = 0;
-      totalScore += combinedTotal;
-      totalScoreTextContent.textContent = totalScore;
+    if (
+      scoreArray[i].textContent != "" &&
+      scoreArray[i + 1].textContent != ""
+    ) {
+      if (scoreArray[i].textContent === scoreArray[i + 1].textContent) {
+        let combinedTotal =
+          parseInt(scoreArray[i].textContent) +
+          parseInt(scoreArray[i + 1].textContent);
+        // console.log(combinedTotal == NaN);
+        // temporary
+        // if (combinedTotal == NaN && direction === "right") togglePop(i, true);
+        if (direction === "right") togglePop(i, true);
+        else if (direction === "left") togglePop(i - 1, true);
+        scoreArray[i].textContent = combinedTotal;
+        scoreArray[i + 1].textContent = 0;
+        totalScore += combinedTotal;
+        totalScoreTextContent.textContent = totalScore;
+      }
     }
   }
 }
@@ -311,17 +314,23 @@ function combineRow(direction) {
 // combine each columns
 function combineColumn(num, direction) {
   for (let i = 0; i < 12; i++) {
-    if (scoreArray[i].textContent === scoreArray[i + num].textContent) {
-      let combinedTotal =
-        parseInt(scoreArray[i].textContent) +
-        parseInt(scoreArray[i + num].textContent);
-      if (combinedTotal != 0 && direction === "down") togglePop(i, false);
-      else if (combinedTotal != 0 && direction === "up")
-        togglePop(i - num, false);
-      scoreArray[i].textContent = combinedTotal;
-      scoreArray[i + num].textContent = 0;
-      totalScore += combinedTotal;
-      totalScoreTextContent.textContent = totalScore;
+    if (
+      scoreArray[i].textContent != "" &&
+      scoreArray[i + num].textContent != ""
+    ) {
+      if (scoreArray[i].textContent === scoreArray[i + num].textContent) {
+        let combinedTotal =
+          parseInt(scoreArray[i].textContent) +
+          parseInt(scoreArray[i + num].textContent);
+        // temporary
+        // if (combinedTotal != 0 && direction === "down") togglePop(i, false);
+        if (direction === "down") togglePop(i, false);
+        else if (direction === "up") togglePop(i - num, false);
+        scoreArray[i].textContent = combinedTotal;
+        scoreArray[i + num].textContent = 0;
+        totalScore += combinedTotal;
+        totalScoreTextContent.textContent = totalScore;
+      }
     }
   }
 }
@@ -389,9 +398,10 @@ function handleInitialization(num) {
 }
 
 function handleResetGame(num) {
-  console.log("WTF");
   for (let i = 0; i < num * num; i++) {
-    if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
+    // original code
+    // if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
+    if (scoreArray[i].textContent != "") scoreArray[i].textContent = "";
   }
   totalScore = 0;
   totalScoreTextContent.textContent = totalScore;
