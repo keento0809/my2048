@@ -258,8 +258,9 @@
               <button type="button" id="startNewGame" class="inline-block rounded-md px-2 py-1 my-2 mx-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">START</button>
               <button type="button" id="resetGame" class="inline-block rounded-md px-2 py-1 my-2 mx-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">RESET</button>
             </div>
+            <h4 class="dark:text-white text-lg font-bold border border-slate-800">Score</h4>
             <div class="scoreBoard">
-              <h4 class="dark:text-white text-lg font-bold pd-2 border border-slate-800">Score : <span id="totalScore"></span></h4>
+              <h4 id="scoreBoard" class="dark:text-white text-lg font-bold pd-2 border border-slate-800"><span id="totalScore"></span></h4>
             </div>
             <p id="resultText" class="dark:text-slate-300"></p>
             <div class="gameScreen py-4 text-center mx-auto">
@@ -316,11 +317,12 @@
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                 data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body relative p-4">
-              <h4 class="dark:text-white text-lg font-bold pd-2 border border-slate-800">YOU LOSE</h4>
+            <div class="modal-body relative p-2">
+              <h4 class="text-lg font-bold py-4 border">YOU LOSE</h4>
+              <h4 class="text-lg font-bold pd-2 border">Your Final Score is <h2 id="finalScoreBoard" class="text-red-400 text-xl font-bold"></h2></h4>
             </div>
             <div
-              class="text-center modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+              class="text-center modal-footer flex flex-shrink-0 flex-wrap items-center justify-center p-4 border-t border-gray-200 rounded-b-md">
               <button type="button" class="backToTop px-6
                 py-2.5
                 bg-purple-600
@@ -345,12 +347,12 @@
             <div id="player" style="display: none"></div>
             <!-- <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">NEXT</button> -->
           </section>
-          <section class="playMode__result playModeMenu">
+          <!-- <section class="playMode__result playModeMenu">
             <h2 class="dark:text-white text-xl font-bold">Result: Your Score is ...</>
             <button type="button" class="backToTop rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">TOP</button>
-            <!-- <button class="backToTop">BACK TO TOP</button> -->
+            <button class="backToTop">BACK TO TOP</button>
           </section>
-        </div>
+        </div> -->
       </div>
     </main>
     <script

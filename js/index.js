@@ -33,6 +33,9 @@ const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
 
 const modalTrigger = document.querySelector("#modalTrigger");
+const finalScoreBoard = document.querySelector("#finalScoreBoard");
+
+const scoreBoard = document.querySelector("#scoreBoard");
 
 // global variables
 let allTds;
@@ -103,27 +106,35 @@ function handleShowOverlay() {
 let scoreArray = [];
 
 function scorePop() {
-  totalScore.classList.add("pop");
+  // original code
+  // totalScore.classList.add("pop");
+  scoreBoard.classList.add("scorePop");
   setTimeout(() => {
-    totalScore.classList.remove("pop");
-  }, 500);
+    // original code
+    // scoreBoard.classList.remove("pop");
+    scoreBoard.classList.remove("scorePop");
+  }, 300);
 }
 
 function addPop(index) {
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
     scoreArray[index].classList.remove("pop", "bgChange");
-  }, 500);
+  }, 300);
 }
 
 // generate random index and apply that as the hash index
 function generateRandomIndex(val) {
   const randomNum = Math.floor(Math.random() * (val * val));
+  console.log(scoreArray[randomNum].textContent);
   if (scoreArray[randomNum].textContent == "") {
     addPop(randomNum);
     scoreArray[randomNum].textContent = 2;
     checkForLose();
-  } else generateRandomIndex(val);
+  } else {
+    console.log("Generate again ??????");
+    generateRandomIndex(val);
+  }
 }
 
 // create new game table
@@ -141,6 +152,7 @@ function handleCreateGameTable(num) {
 
 // start game
 function handleStartGame(num) {
+  // handleCreateGameTable(num);
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
   allTds = document.querySelectorAll(".td");
@@ -148,7 +160,14 @@ function handleStartGame(num) {
   // startNewGameBtn.classList.add("disabledBtn");
   resetGameBtn.disabled = false;
   // resetGameBtn.classList.remove("disabledBtn");
+  window.addEventListener("keydown", handleKeydown);
+  swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
+  swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
+  swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
+  swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 }
+
+let unique = false;
 
 // swipe right
 function handleSwipeRight(num) {
@@ -178,11 +197,30 @@ function handleSwipeRight(num) {
 
       // create new array combining two arrays (zeros,filteredRow) without changing original ones
       let newRow = zeros.concat(filteredRow);
+      console.log(newRow);
 
       scoreArray[i].textContent = newRow[0];
       scoreArray[i + 1].textContent = newRow[1];
       scoreArray[i + 2].textContent = newRow[2];
       scoreArray[i + 3].textContent = newRow[3];
+
+      if (
+        (scoreArray[i + 1].textContent === scoreArray[i + 2].textContent) ===
+        scoreArray[i + 3].textContent
+      )
+        console.log("triple 777 !!!");
+      if (
+        scoreArray[i].textContent != "" &&
+        scoreArray[i + 1].textContent != "" &&
+        scoreArray[i + 2].textContent != "" &&
+        scoreArray[i + 3].textContent != "" &&
+        scoreArray[i].textContent === scoreArray[i + 1].textContent &&
+        scoreArray[i + 2].textContent === scoreArray[i + 3].textContent
+      ) {
+        console.log("double combo 777 !!!");
+        unique = true;
+        return unique;
+      }
     }
   }
 }
@@ -215,6 +253,16 @@ function handleSwipeLeft(num) {
       scoreArray[i + 1].textContent = newRow[1];
       scoreArray[i + 2].textContent = newRow[2];
       scoreArray[i + 3].textContent = newRow[3];
+
+      if (
+        scoreArray[i].textContent != "" &&
+        scoreArray[i + 1].textContent != "" &&
+        scoreArray[i + 2].textContent != "" &&
+        scoreArray[i + 3].textContent != "" &&
+        scoreArray[i].textContent === scoreArray[i + 1].textContent &&
+        scoreArray[i + 2].textContent === scoreArray[i + 3].textContent
+      )
+        console.log("double combo 777 !!!");
     }
   }
 }
@@ -245,6 +293,16 @@ function handleSwipeDown(num) {
     scoreArray[i + num].textContent = newColumn[1];
     scoreArray[i + num * 2].textContent = newColumn[2];
     scoreArray[i + num * 3].textContent = newColumn[3];
+
+    if (
+      scoreArray[i].textContent != "" &&
+      scoreArray[i + num].textContent != "" &&
+      scoreArray[i + num].textContent != "" &&
+      scoreArray[i + num].textContent != "" &&
+      scoreArray[i].textContent === scoreArray[i + num].textContent &&
+      scoreArray[i + num].textContent === scoreArray[i + num].textContent
+    )
+      console.log("double combo 777 !!!");
   }
 }
 
@@ -284,12 +342,23 @@ function togglePop(index, isRow) {
     // original code
     scoreArray[index + val].classList.remove("pop", "bgChange-initial");
     // scoreArray[index + val].classList.remove("pop");
-  }, 500);
+  }, 300);
 }
 
 // combine each rows
 function combineRow(direction) {
   for (let i = 0; i < 15; i++) {
+    if (
+      i >= 2 &&
+      scoreArray[i - 2].textContent != "" &&
+      scoreArray[i - 1].textContent != "" &&
+      scoreArray[i].textContent != "" &&
+      scoreArray[i + 1].textContent != ""
+      // scoreArray[i - 2].textContent == scoreArray[i - 1].textContent &&
+      // scoreArray[i].textContent == scoreArray[i + 1].textContent
+    ) {
+      console.log("bigo ~~~~~!!");
+    }
     if (
       scoreArray[i].textContent != "" &&
       scoreArray[i + 1].textContent != ""
@@ -306,6 +375,7 @@ function combineRow(direction) {
         scoreArray[i].textContent = combinedTotal;
         scoreArray[i + 1].textContent = 0;
         totalScore += combinedTotal;
+        scorePop();
         totalScoreTextContent.textContent = totalScore;
       }
     }
@@ -330,6 +400,7 @@ function combineColumn(num, direction) {
         scoreArray[i].textContent = combinedTotal;
         scoreArray[i + num].textContent = 0;
         totalScore += combinedTotal;
+        scorePop();
         totalScoreTextContent.textContent = totalScore;
       }
     }
@@ -339,8 +410,10 @@ function combineColumn(num, direction) {
 // commands
 function keyRight(num) {
   handleSwipeRight(num);
+  console.log("First handleSwipeRight");
   combineRow("right");
   handleSwipeRight(num);
+  console.log("Second handleSwipeRight");
   generateRandomIndex(num);
 }
 
@@ -381,8 +454,12 @@ function checkForLose() {
     if (scoreArray[i].textContent == 0) numOfZeros++;
   }
   if (numOfZeros === 0) {
+    finalScoreBoard.textContent = `${totalScoreTextContent.textContent}`;
     modalTrigger.click();
     resultText.textContent = "You lose the game...";
+    setTimeout(() => {
+      resetGameBtn.click();
+    }, 2000);
     window.removeEventListener("keydown", handleKeydown);
 
     swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
@@ -409,14 +486,16 @@ function handleResetGame(num) {
   for (let i = 0; i < num * num; i++) {
     // original code
     // if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
-    if (scoreArray[i].textContent != "") scoreArray[i].textContent = "";
+    scoreArray[i].textContent = "";
   }
+  console.log(scoreArray);
   totalScore = 0;
   totalScoreTextContent.textContent = totalScore;
   resultText.textContent = "";
   startNewGameBtn.disabled = false;
   resetGameBtn.disabled = true;
   // resetGameBtn.classList.add("disabledBtn");
+  console.log("reset complete !!");
 }
 
 // Hook up the event
@@ -449,10 +528,10 @@ startNewGameBtn.addEventListener("click", () =>
 );
 resetGameBtn.addEventListener("click", () => handleResetGame(lengthOfSquare));
 // temporary changing code
-swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
-swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
-swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
-swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
+// swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
+// swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
+// swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
+// swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 
 // modalTrigger.addEventListener("click",)
 

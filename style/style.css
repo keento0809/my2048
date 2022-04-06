@@ -84,6 +84,11 @@
   animation-duration: 0.4s;
 }
 
+.scorePop {
+  animation: scorePopping;
+  animation-duration: 0.4s;
+}
+
 .disabledBtn {
   background-color: -internal-light-dark(
     rgba(239, 239, 239, 0.3),
@@ -115,6 +120,16 @@
   }
   40% {
     transform: scaleY(1.5);
+  }
+}
+
+@keyframes scorePopping {
+  0%,
+  100% {
+    transform: none;
+  }
+  40% {
+    transform: scale(1.5);
   }
 }
 
