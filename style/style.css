@@ -98,10 +98,14 @@
 
 .bgChange {
   background-color: orange;
+  border-color: orange;
+  box-shadow: 0 0 1rem orange;
 }
 
 .bgChange-initial {
   background-color: violet;
+  border-color: violet;
+  box-shadow: 0 0 0.8rem violet;
 }
 
 @keyframes popping {

@@ -32,6 +32,8 @@ const swipeDownBtn = document.querySelector("#swipeDown");
 const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
 
+const modalTrigger = document.querySelector("#modalTrigger");
+
 // global variables
 let allTds;
 let playModeMenuIndex = 0;
@@ -104,14 +106,14 @@ function scorePop() {
   totalScore.classList.add("pop");
   setTimeout(() => {
     totalScore.classList.remove("pop");
-  }, 1000);
+  }, 500);
 }
 
 function addPop(index) {
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
     scoreArray[index].classList.remove("pop", "bgChange");
-  }, 1000);
+  }, 500);
 }
 
 // generate random index and apply that as the hash index
@@ -276,14 +278,13 @@ function handleSwipeUp(num) {
 }
 
 function togglePop(index, isRow) {
-  console.log("Toggling pop now????");
   let val = isRow ? 1 : lengthOfSquare;
   scoreArray[index + val].classList.add("pop", "bgChange-initial");
   setTimeout(() => {
     // original code
     scoreArray[index + val].classList.remove("pop", "bgChange-initial");
     // scoreArray[index + val].classList.remove("pop");
-  }, 1000);
+  }, 500);
 }
 
 // combine each rows
@@ -380,7 +381,14 @@ function checkForLose() {
     if (scoreArray[i].textContent == 0) numOfZeros++;
   }
   if (numOfZeros === 0) {
+    modalTrigger.click();
     resultText.textContent = "You lose the game...";
+    window.removeEventListener("keydown", handleKeydown);
+
+    swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+    swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+    swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+    swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
   }
 }
 
@@ -446,6 +454,8 @@ swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
 swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
 swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 
+// modalTrigger.addEventListener("click",)
+
 //
 //
 // Youtube Player API
@@ -501,3 +511,12 @@ function stopVideo() {
 // pauseBtn.addEventListener("click", () => player.pauseVideo());
 startNewGameBtn.addEventListener("click", () => player.playVideo());
 resetGameBtn.addEventListener("click", () => player.stopVideo());
+
+function handleKeydown(e) {
+  e.keyCode === 37 && keyLeft(lengthOfSquare);
+  e.keyCode === 38 && keyUp(lengthOfSquare);
+  e.keyCode === 39 && keyRight(lengthOfSquare);
+  e.keyCode === 40 && keyDown(lengthOfSquare);
+}
+
+window.addEventListener("keydown", handleKeydown);
