@@ -115,6 +115,7 @@ function scorePop() {
 }
 
 function addPop(index) {
+  console.log("Add pop popping...");
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
     scoreArray[index].classList.remove("pop", "bgChange");
@@ -144,7 +145,7 @@ function handleCreateGameTable(num) {
     // original code
     // td.textContent = 0;
     td.textContent = "";
-    td.classList.add("td", "dark:text-slate-300", "tdStyle");
+    td.classList.add("td", "tdStyle");
     gameTable.append(td);
     scoreArray.push(td);
   }
@@ -159,6 +160,7 @@ function handleStartGame(num) {
   startNewGameBtn.disabled = true;
   // startNewGameBtn.classList.add("disabledBtn");
   resetGameBtn.disabled = false;
+  checkBackgroundColor(num);
   // test
   window.addEventListener("keydown", handleKeydown);
   swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
@@ -336,6 +338,7 @@ function handleSwipeUp(num) {
 }
 
 function togglePop(index, isRow) {
+  console.log("WTF, toggling...");
   let val = isRow ? 1 : lengthOfSquare;
   scoreArray[index + val].classList.add("pop", "bgChange-initial");
   setTimeout(() => {
@@ -411,20 +414,28 @@ const scoreNumArr = ["", 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
 
 function checkBackgroundColor(num) {
   for (let i = 0; i < num * num; i++) {
+    setTimeout(() => {
+      scoreArray[i].className = "td tdStyle";
+    }, 350);
     // if (scoreArray[i].contains(`panel-number`)) console.log("Containing!!");
     if (scoreArray[i].textContent == "") {
+      scoreArray[i].className = "td tdStyle";
       continue;
     }
     // console.log(scoreArray[i].textContent);
     let n = 0;
-    while (n < scoreNumArr.length) {
-      if (scoreArray[i].textContent == scoreNumArr[n]) {
-        console.log(scoreNumArr[n]);
-        scoreArray[i].classList.add(`panel-number-${scoreNumArr[n]}`);
-        break;
+    setTimeout(() => {
+      while (n < scoreNumArr.length) {
+        if (scoreArray[i].textContent == scoreNumArr[n]) {
+          console.log(scoreNumArr[n]);
+          // test
+          // scoreArray[i].className = "td tdStyle";
+          scoreArray[i].classList.add(`panel-number-${scoreNumArr[n]}`);
+          break;
+        }
+        n++;
       }
-      n++;
-    }
+    }, 360);
     console.log(scoreArray[i].textContent == "");
   }
 }
@@ -446,6 +457,8 @@ function keyLeft(num) {
   combineRow("left");
   handleSwipeLeft(num);
   generateRandomIndex(num);
+  // test
+  checkBackgroundColor(num);
 }
 
 function keyUp(num) {
@@ -453,6 +466,8 @@ function keyUp(num) {
   combineColumn(num, "up");
   handleSwipeUp(num);
   generateRandomIndex(num);
+  // test
+  checkBackgroundColor(num);
 }
 
 function keyDown(num) {
@@ -460,6 +475,8 @@ function keyDown(num) {
   combineColumn(num, "down");
   handleSwipeDown(num);
   generateRandomIndex(num);
+  // test
+  checkBackgroundColor(num);
 }
 
 // check for the number 2048 in the squares to win
@@ -517,8 +534,7 @@ function removeEvents() {
 // test
 function resetBackgroundColor(num) {
   for (let i = 0; i < num * num; i++) {
-    scoreArray[i].className = "td dark:text-slate-300 tdStyle";
-    console.log(scoreArray[i]);
+    scoreArray[i].className = "td tdStyle";
   }
 }
 

@@ -102,13 +102,14 @@
 }
 
 .bgChange {
-  background-color: orange;
+  /* background-color: orange; */
+  background-color: rgb(255, 255, 184);
   border-color: orange;
   box-shadow: 0 0 1rem orange;
 }
 
 .bgChange-initial {
-  background-color: violet;
+  /* background-color: violet; */
   border-color: violet;
   box-shadow: 0 0 0.8rem violet;
 }
@@ -134,34 +135,34 @@
 }
 
 .panel-number-2 {
-  background-color: lightyellow;
+  background-color: rgb(255, 255, 184);
 }
 .panel-number-4 {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(245, 245, 245);
 }
 .panel-number-8 {
-  background-color: lightsalmon;
+  background-color: rgb(255, 162, 125);
 }
 .panel-number-16 {
-  background-color: lightseagreen;
+  background-color: rgb(153, 255, 250);
 }
 .panel-number-32 {
-  background-color: lightcoral;
+  background-color: rgb(255, 146, 146);
 }
 .panel-number-64 {
-  background-color: lightcoral;
+  background-color: lightpink;
 }
 .panel-number-128 {
-  background-color: lightcoral;
+  background-color: rgb(255, 255, 97);
 }
 .panel-number-256 {
-  background-color: lightcoral;
+  background-color: rgb(153, 229, 252);
 }
 .panel-number-512 {
-  background-color: lightcoral;
+  background-color: rgb(255, 173, 244);
 }
 .panel-number-1024 {
-  background-color: lightcoral;
+  background-color: rgb(188, 255, 157);
 }
 .panel-number-2048 {
   background-color: yellow;
