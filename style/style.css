@@ -58,11 +58,12 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  transition: all 0.9s ease;
 }
 
 .td {
   display: inline-block;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 4px;
   font-weight: bold;
   font-size: 18px;
@@ -83,6 +84,26 @@
   animation-duration: 0.4s;
 }
 
+.disabledBtn {
+  background-color: -internal-light-dark(
+    rgba(239, 239, 239, 0.3),
+    rgba(19, 1, 1, 0.3)
+  );
+  color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+  border-color: -internal-light-dark(
+    rgba(118, 118, 118, 0.3),
+    rgba(195, 195, 195, 0.3)
+  );
+}
+
+.bgChange {
+  background-color: orange;
+}
+
+.bgChange-initial {
+  background-color: violet;
+}
+
 @keyframes popping {
   0%,
   100% {
@@ -91,4 +112,38 @@
   40% {
     transform: scaleY(1.5);
   }
+}
+
+.panel-number-2 {
+  background-color: lightyellow;
+}
+.panel-number-4 {
+  background-color: lightgray;
+}
+.panel-number-8 {
+  background-color: lightsalmon;
+}
+.panel-number-16 {
+  background-color: lightseagreen;
+}
+.panel-number-32 {
+  background-color: lightcoral;
+}
+.panel-number-64 {
+  background-color: lightcoral;
+}
+.panel-number-128 {
+  background-color: lightcoral;
+}
+.panel-number-256 {
+  background-color: lightcoral;
+}
+.panel-number-512 {
+  background-color: lightcoral;
+}
+.panel-number-1024 {
+  background-color: lightcoral;
+}
+.panel-number-2048 {
+  background-color: yellow;
 }

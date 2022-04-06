@@ -100,11 +100,28 @@ function handleShowOverlay() {
 
 let scoreArray = [];
 
+function scorePop() {
+  totalScore.classList.add("pop");
+  setTimeout(() => {
+    console.log("Time is up ...");
+    totalScore.classList.remove("pop");
+  }, 1000);
+}
+
+function addPop(index) {
+  scoreArray[index].classList.add("pop", "bgChange");
+  setTimeout(() => {
+    console.log("Time is up ...");
+    scoreArray[index].classList.remove("pop", "bgChange");
+  }, 1000);
+}
+
 // generate random index and apply that as the hash index
 function generateRandomIndex(val) {
   const randomNum = Math.floor(Math.random() * (val * val));
   console.log(randomNum);
   if (scoreArray[randomNum].textContent == 0) {
+    addPop(randomNum);
     scoreArray[randomNum].textContent = 2;
     checkForLose();
   } else generateRandomIndex(val);
@@ -127,6 +144,10 @@ function handleStartGame(num) {
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
   allTds = document.querySelectorAll(".td");
+  startNewGameBtn.disabled = true;
+  // startNewGameBtn.classList.add("disabledBtn");
+  resetGameBtn.disabled = false;
+  // resetGameBtn.classList.remove("disabledBtn");
 }
 
 // swipe right
@@ -259,20 +280,14 @@ function handleSwipeUp(num) {
 }
 
 function togglePop(index, isRow) {
-  if (isRow) {
-    scoreArray[index + 1].classList.add("pop");
-    setTimeout(() => {
-      console.log("Time is up ...");
-      scoreArray[index + 1].classList.remove("pop");
-    }, 2000);
-  }
-  if (!isRow) {
-    scoreArray[index + lengthOfSquare].classList.add("pop");
-    setTimeout(() => {
-      console.log("Time is up ...");
-      scoreArray[index + lengthOfSquare].classList.remove("pop");
-    }, 2000);
-  }
+  let val = isRow ? 1 : lengthOfSquare;
+  scoreArray[index + val].classList.add("pop", "bgChange-initial");
+  setTimeout(() => {
+    console.log("Time is up ...");
+    // original code
+    scoreArray[index + val].classList.remove("pop", "bgChange-initial");
+    // scoreArray[index + val].classList.remove("pop");
+  }, 1000);
 }
 
 // combine each rows
@@ -360,8 +375,17 @@ function checkForLose() {
   }
 }
 
+let numbersArr = [];
+
 function handleInitialization(num) {
   handleCreateGameTable(num);
+  // test loop
+  // numbersArr = [];
+  let even = 2;
+  while (even < 2049) {
+    numbersArr.push(even);
+    even *= 2;
+  }
 }
 
 function handleResetGame(num) {
@@ -372,9 +396,9 @@ function handleResetGame(num) {
   totalScore = 0;
   totalScoreTextContent.textContent = totalScore;
   resultText.textContent = "";
-  startNewGameBtn.setAttribute("enabled", "enabled");
-  console.log(startNewGameBtn);
-  // resetGameBtn.setAttribute("disabled", "true");
+  startNewGameBtn.disabled = false;
+  resetGameBtn.disabled = true;
+  // resetGameBtn.classList.add("disabledBtn");
 }
 
 // Hook up the event
