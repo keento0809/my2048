@@ -159,7 +159,7 @@ function handleStartGame(num) {
   startNewGameBtn.disabled = true;
   // startNewGameBtn.classList.add("disabledBtn");
   resetGameBtn.disabled = false;
-  // resetGameBtn.classList.remove("disabledBtn");
+  // test
   window.addEventListener("keydown", handleKeydown);
   swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
   swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
@@ -495,6 +495,11 @@ function handleResetGame(num) {
   startNewGameBtn.disabled = false;
   resetGameBtn.disabled = true;
   // resetGameBtn.classList.add("disabledBtn");
+  window.removeEventListener("keydown", handleKeydown);
+  swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+  swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+  swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+  swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
   console.log("reset complete !!");
 }
 
@@ -598,4 +603,4 @@ function handleKeydown(e) {
   e.keyCode === 40 && keyDown(lengthOfSquare);
 }
 
-window.addEventListener("keydown", handleKeydown);
+// window.addEventListener("keydown", handleKeydown);
