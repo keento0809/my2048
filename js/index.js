@@ -1,3 +1,7 @@
+// import { youtubePlayerAPI } from "./youtubePlayerAPI";
+
+// youtubePlayerAPI();
+
 // Get DOM
 const listItems = document.querySelectorAll(".sideBar__listItem");
 const contents = document.querySelectorAll(".content");
@@ -36,6 +40,13 @@ const modalTrigger = document.querySelector("#modalTrigger");
 const finalScoreBoard = document.querySelector("#finalScoreBoard");
 
 const scoreBoard = document.querySelector("#scoreBoard");
+
+const playSecondBGM = document.querySelector("#playSecondBGM");
+const stopSecondBGM = document.querySelector("#stopSecondBGM");
+const playThirdBGM = document.querySelector("#playThirdBGM");
+const stopThirdBGM = document.querySelector("#stopThirdBGM");
+const playFourthBGM = document.querySelector("#playFourthBGM");
+const stopFourthBGM = document.querySelector("#stopFourthBGM");
 
 // global variables
 let allTds;
@@ -119,7 +130,7 @@ function addPop(index) {
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
     scoreArray[index].classList.remove("pop", "bgChange");
-  }, 300);
+  }, 250);
 }
 
 // generate random index and apply that as the hash index
@@ -131,7 +142,7 @@ function generateRandomIndex(val) {
     scoreArray[randomNum].textContent = 2;
     checkForLose();
   } else {
-    console.log("Generate again ??????");
+    // console.log("Generate again ??????");
     generateRandomIndex(val);
   }
 }
@@ -145,7 +156,7 @@ function handleCreateGameTable(num) {
     // original code
     // td.textContent = 0;
     td.textContent = "";
-    td.classList.add("td", "tdStyle");
+    td.classList.add("td", "tdStyle", "dark:text-slate-300");
     gameTable.append(td);
     scoreArray.push(td);
   }
@@ -345,7 +356,7 @@ function togglePop(index, isRow) {
     // original code
     scoreArray[index + val].classList.remove("pop", "bgChange-initial");
     // scoreArray[index + val].classList.remove("pop");
-  }, 300);
+  }, 250);
 }
 
 // combine each rows
@@ -411,12 +422,13 @@ function combineColumn(num, direction) {
 }
 
 const scoreNumArr = ["", 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+const darkBackground = ["", "rgba(255, 255, 184,0.7)", "rgba()"];
 
 function checkBackgroundColor(num) {
   for (let i = 0; i < num * num; i++) {
     setTimeout(() => {
       scoreArray[i].className = "td tdStyle";
-    }, 350);
+    }, 220);
     // if (scoreArray[i].contains(`panel-number`)) console.log("Containing!!");
     if (scoreArray[i].textContent == "") {
       scoreArray[i].className = "td tdStyle";
@@ -430,12 +442,16 @@ function checkBackgroundColor(num) {
           console.log(scoreNumArr[n]);
           // test
           // scoreArray[i].className = "td tdStyle";
-          scoreArray[i].classList.add(`panel-number-${scoreNumArr[n]}`);
+          scoreArray[i].classList.add(
+            // `panel-number-${scoreNumArr[n]} dark:bg-dark-panel-number-${scoreNumArr[n]}`
+            `panel-number-${scoreNumArr[n]}`
+            // "dark:text-black"
+          );
           break;
         }
         n++;
       }
-    }, 360);
+    }, 230);
     console.log(scoreArray[i].textContent == "");
   }
 }
@@ -618,6 +634,9 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
+var player2;
+var player3;
+var player4;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
     height: "200",
@@ -632,6 +651,48 @@ function onYouTubeIframeAPIReady() {
       rel: 0,
     },
     videoId: "G4TUmkg4ojg",
+  });
+  player2 = new YT.Player("player-second", {
+    height: "200",
+    width: "400",
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+      onClick: onPlayerReady,
+    },
+    playerVars: {
+      loop: 1,
+      rel: 0,
+    },
+    videoId: "G4TUmkg4ojg",
+  });
+  player3 = new YT.Player("player-third", {
+    height: "200",
+    width: "400",
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+      onClick: onPlayerReady,
+    },
+    playerVars: {
+      loop: 1,
+      rel: 0,
+    },
+    videoId: "NDh0oRih_3c",
+  });
+  player4 = new YT.Player("player-fourth", {
+    height: "200",
+    width: "400",
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+      onClick: onPlayerReady,
+    },
+    playerVars: {
+      loop: 1,
+      rel: 0,
+    },
+    videoId: "nuA9NsXo4Fg",
   });
 }
 
@@ -653,6 +714,15 @@ function stopVideo() {
 // pauseBtn.addEventListener("click", () => player.pauseVideo());
 startNewGameBtn.addEventListener("click", () => player.playVideo());
 resetGameBtn.addEventListener("click", () => player.stopVideo());
+
+playSecondBGM.addEventListener("click", () => player2.playVideo());
+stopSecondBGM.addEventListener("click", () => player2.stopVideo());
+
+playThirdBGM.addEventListener("click", () => player3.playVideo());
+stopThirdBGM.addEventListener("click", () => player3.stopVideo());
+
+playFourthBGM.addEventListener("click", () => player4.playVideo());
+stopFourthBGM.addEventListener("click", () => player4.stopVideo());
 
 function handleKeydown(e) {
   e.keyCode === 37 && keyLeft(lengthOfSquare);
