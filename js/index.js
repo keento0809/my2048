@@ -191,7 +191,8 @@ function swipeButtonsEnabled() {
 
 // start game
 function handleStartGame(num) {
-  // handleCreateGameTable(num);
+  generateRandomIndex(num);
+  // test
   generateRandomIndex(num);
   totalScoreTextContent.textContent = 0;
   allTds = document.querySelectorAll(".td");
