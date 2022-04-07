@@ -728,7 +728,13 @@ function stopVideo() {
 // }
 
 function handleForwardBGM() {
-  console.log(this);
+  if (startNewGameBtn.classList.contains("bgm-first"))
+    startNewGameBtn.classList.remove("bgm-first");
+  if (startNewGameBtn.classList.contains("bgm-second"))
+    startNewGameBtn.classList.remove("bgm-second");
+  if (startNewGameBtn.classList.contains("bgm-third"))
+    startNewGameBtn.classList.remove("bgm-third");
+
   if (this.classList.contains("bgm-first")) {
     // chosenVideoId = ids[0];
     startNewGameBtn.classList.add("bgm-first");
@@ -740,7 +746,6 @@ function handleForwardBGM() {
     resetGameBtn.classList.add("bgm-second");
   }
   if (this.classList.contains("bgm-third")) {
-    chosenVideoId = ids[2];
     startNewGameBtn.classList.add("bgm-third");
     resetGameBtn.classList.add("bgm-third");
   }
