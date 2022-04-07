@@ -68,7 +68,8 @@
                         </summary>
                         <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-3/4 mx-auto text-left">
                             <p class="text-left">&nbsp;2048 is a single-player sliding tile puzzle video game written by Italian web developer Gabriele Cirulli and published on GitHub. The objective of the game is to slide numbered tiles on a grid to combine them to create a tile with the number 2048; however, one can continue to play the game after reaching the goal, creating tiles with larger numbers. It was originally written in JavaScript and CSS over a weekend, and released on 9 March 2014 as free and open-source software subject to the MIT License. </p>
-                        </div>
+                            <p class="pt-2">&nbsp;Reference: </p>
+                          </div>
                     </details>
                     <details class="open: bg-white dark:bg-slate-800 dark:open:bg-slate-800 pb-8 rounded-lg">
                         <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">
@@ -76,7 +77,8 @@
                         </summary>
                         <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-3/4 mx-auto text-left">
                             <p class="text-left">&nbsp;Basically, 2048 presents with with a 4×4 grid. When you start the game, there will be two “tiles” on the grid, each displaying the number 2 or 4. You hit the arrow keys on your keyboard to move the tiles around — and also to generate new tiles, which will also be valued at 2 or 4. When two equal tiles collide, they combine to give you one greater tile that displays their sum. The more you do this, obviously, the higher the tiles get and the more crowded the board becomes. Your objective is to reach 2048 before the board fills up.</p>
-                        </div>
+                            <p class="pt-2">&nbsp;Reference: </p>
+                          </div>
                     </details>
                 </div>
               </div>
@@ -85,11 +87,11 @@
                 <p>Start Game</p>
               </div> -->
               <div class="content__record content mt-6">
-                <h2 class="dark:text-white text-xl font-bold menu-title">Your Record</h2>
+                <h2 class="dark:text-white text-xl font-bold menu-title pb-8">Your Record</h2>
                 <p class="dark:text-slate-300">Your record will be appeared below.</p>
               </div>
               <div class="content__account content mt-6">
-                <h2 class="dark:text-white text-xl font-bold menu-title">Your Account</h2>
+                <h2 class="dark:text-white text-xl font-bold menu-title pb-8">Your Account</h2>
                 <p class="dark:text-slate-300">Your account info will be below.</p>
               </div>
             </div>
@@ -174,9 +176,9 @@
         </div>
         <div class="main__container playMode hidden">
           <section class="playMode__chooseMusic playModeMenu active text-center">
-            <h2 class="dark:text-white text-lg font-bold pb-4 menu-title">Choose background music!</h2>
-            <p class="dark:text-white text-sm font-normal w-2/3 mx-auto">Click the images below.</p>
-            <p class="dark:text-white text-sm font-normal w-2/3 mx-auto">Try and choose one BGM!</p>
+            <h2 class="dark:text-white text-lg font-bold pb-4 menu-title">Choose the background music!</h2>
+            <p class="dark:text-slate-300 text-sm font-normal w-2/3 mx-auto">Hover the images below.</p>
+            <p class="dark:text-slate-300 text-sm font-normal w-2/3 mx-auto">Try and choose one BGM!</p>
             <div id="carouselExampleIndicators" class="carousel slide relative py-4" data-bs-ride="carousel">
               <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
@@ -214,8 +216,8 @@
                   />
                   <div class="overlay rounded-md p-2 m-2 transition duration-700 absolute top-0 left-0 bg-white dark:bg-slate-800">
                     <h4 class="mb-3 bgm-title font-bold text-lg dark:text-white">CAFE</h4>
-                    <button id="playSecondBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-bold text-xs uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out leading-4"><ion-icon name="play-outline"></ion-icon></button>
-                    <button id="stopSecondBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <button id="playSecondBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-bold text-xs uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out leading-4">▷</button>
+                    <button id="stopSecondBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">□</button>
                     <div class="my-2">
                       <!-- <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button> -->
                       <button type="button" class="choseBGM bgm-first rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
@@ -235,8 +237,8 @@
                   />
                   <div class="overlay rounded-md p-2 m-2 transition duration-700 absolute top-0 left-0 bg-white dark:bg-slate-800">
                     <h4 class="mb-3 bgm-title font-bold text-lg dark:text-white">JAZZ</h4>
-                    <button id="playThirdBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="play-outline"></ion-icon></button>
-                    <button id="stopThirdBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <button id="playThirdBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">▷</button>
+                    <button id="stopThirdBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">□</button>
                     <div class="my-2">
                       <button type="button" class="choseBGM bgm-second rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
                     </div>
@@ -255,8 +257,8 @@
                   />
                   <div class="overlay rounded-md p-2 m-2 transition duration-700 absolute top-0 left-0 bg-white dark:bg-slate-800">
                     <h4 class="mb-3 bgm-title font-bold text-lg dark:text-white">RAIN</h4>
-                    <button id="playFourthBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="play-outline"></ion-icon></button>
-                    <button id="stopFourthBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <button id="playFourthBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">▷</button>
+                    <button id="stopFourthBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">□</button>
                     <div class="my-2">
                       <!-- <button type="button" class="choseBGM rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button> -->
                       <button type="button" class="choseBGM bgm-third rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
@@ -264,7 +266,8 @@
                   </div>
                 </div>
               </div>
-              <button
+              <!-- test hiding  -->
+              <!-- <button
                 class="text-black carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
@@ -281,17 +284,9 @@
               >
                 <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-              </button>
+              </button> -->
             </div>
             <button type="button" class="backToTop rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">TOP</button>
-            <!-- <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">NEXT</button> -->
-            
-            <!-- <button id="playSecondBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
-            <button id="stopSecondBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button>
-            <button id="playThirdBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
-            <button id="stopThirdBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button> -->
-            <!-- <button id="playFourthBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
-            <button id="stopFourthBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button> -->
 
             <div id="player-second" class="hidden"></div>
             <div id="player-third" class="hidden"></div>

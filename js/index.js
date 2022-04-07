@@ -813,14 +813,56 @@ function handleStopBgm() {
 startNewGameBtn.addEventListener("click", handlePlayBgm);
 resetGameBtn.addEventListener("click", handleStopBgm);
 
-playSecondBGM.addEventListener("click", () => player2.playVideo());
-stopSecondBGM.addEventListener("click", () => player2.stopVideo());
+let isPlayingSound = false;
 
-playThirdBGM.addEventListener("click", () => player3.playVideo());
-stopThirdBGM.addEventListener("click", () => player3.stopVideo());
+function resetPlayingSound() {
+  player2.stopVideo();
+  player3.stopVideo();
+  player4.stopVideo();
+  isPlayingSound = false;
+}
 
-playFourthBGM.addEventListener("click", () => player4.playVideo());
-stopFourthBGM.addEventListener("click", () => player4.stopVideo());
+playSecondBGM.addEventListener("click", () => {
+  isPlayingSound && resetPlayingSound();
+  player2.playVideo();
+  playSecondBGM.textContent = "||";
+  playSecondBGM.disabled = true;
+  isPlayingSound = true;
+});
+stopSecondBGM.addEventListener("click", () => {
+  player2.stopVideo();
+  playSecondBGM.textContent = "▷";
+  playSecondBGM.disabled = false;
+  isPlayingSound = false;
+});
+
+playThirdBGM.addEventListener("click", () => {
+  isPlayingSound && resetPlayingSound();
+  player3.playVideo();
+  playThirdBGM.textContent = "||";
+  playThirdBGM.disabled = true;
+  isPlayingSound = true;
+});
+stopThirdBGM.addEventListener("click", () => {
+  player3.stopVideo();
+  playThirdBGM.textContent = "▷";
+  playThirdBGM.disabled = false;
+  isPlayingSound = false;
+});
+
+playFourthBGM.addEventListener("click", () => {
+  isPlayingSound && resetPlayingSound();
+  player4.playVideo();
+  playFourthBGM.textContent = "||";
+  playFourthBGM.disabled = true;
+  isPlayingSound = true;
+});
+stopFourthBGM.addEventListener("click", () => {
+  player4.stopVideo();
+  playFourthBGM.textContent = "▷";
+  playFourthBGM.disabled = false;
+  isPlayingSound = false;
+});
 
 choseBgmBtns.forEach((btn) => btn.addEventListener("click", handleForwardBGM));
 
