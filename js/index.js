@@ -782,7 +782,7 @@ function handleStopBgm() {
 
 // pauseBtn.addEventListener("click", () => player.pauseVideo());
 startNewGameBtn.addEventListener("click", handlePlayBgm);
-resetGameBtn.addEventListener("click", () => handleStopBgm);
+resetGameBtn.addEventListener("click", handleStopBgm);
 
 playSecondBGM.addEventListener("click", () => player2.playVideo());
 stopSecondBGM.addEventListener("click", () => player2.stopVideo());
