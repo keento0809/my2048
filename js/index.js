@@ -196,13 +196,14 @@ function handleStartGame(num) {
   totalScoreTextContent.textContent = 0;
   allTds = document.querySelectorAll(".td");
   startNewGameBtn.disabled = true;
-  // startNewGameBtn.classList.add("disabledBtn");
   resetGameBtn.disabled = false;
   swipeButtonsEnabled();
   checkBackgroundColor(num);
+  // test
+  window.addEventListener("keydown", handleKeydown);
 }
 
-window.addEventListener("keydown", handleKeydown);
+// add event listener
 swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
 swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
 swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
@@ -637,8 +638,6 @@ startNewGameBtn.addEventListener("click", () =>
   handleStartGame(lengthOfSquare)
 );
 resetGameBtn.addEventListener("click", () => handleResetGame(lengthOfSquare));
-
-// modalTrigger.addEventListener("click",)
 
 //
 //

@@ -114,7 +114,8 @@
   box-shadow: 0 0 0.8rem violet;
 }
 
-.bgm-title {
+.bgm-title,
+.menu-title {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }

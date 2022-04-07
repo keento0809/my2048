@@ -13,7 +13,7 @@
   <body class="bg-white dark:bg-slate-800 min-h-screen">
     <header class="fixed top-0 left-0 right-0">
       <div class="container flex justify-between items-center dark:border-white flex justify-between w-11/12 mx-auto">
-        <h2 id="logo" class="text-2xl cursor-pointer font-bold text-fuchsia-400 dark:text-fuchsia-500 tracking-tight">My 2048</h2>
+        <h2 id="logo" class="text-2xl cursor-pointer font-bold text-fuchsia-400 dark:text-fuchsia-500 tracking-tight menu-title">My 2048</h2>
         <span id="toggleDarkMode" class="dark:text-white text-xl inline-block leading-4 cursor-pointer">
             <ion-icon name="contrast-outline"></ion-icon>
         </span>
@@ -50,7 +50,7 @@
           <section class="contents grow">
             <div class="content__container pt-2 px-6 grow text-center">
               <div class="content__home content mt-6 active">
-                <h2 class="dark:text-white font-bold text-xl">2048 - HOME</h2>
+                <h2 class="dark:text-white font-bold text-xl menu-title">2048 - HOME</h2>
                 <div class="cursor-pointer transition duration-700 hover:opacity-70 backdrop w-1/2 mx-auto relative">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/2048_win.png/330px-2048_win.png" alt="dummyImage" class="py-10 text-center mx-auto cursor-pointer transition ease-in-out">
                   <div class="overlay transition duration-700 absolute top-1/2 left-1/2 transform: -translate-x-1/2 -translate-y-1/2">
@@ -62,7 +62,7 @@
               <div class="content__about content mt-6">
                 <div class="mx-auto p-1">
                     <details class="open: bg-white dark:bg-slate-800 dark:open:bg-slate-800 pb-8 rounded-lg">
-                        <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none">
+                        <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">
                             What is 2048 all about?
                         </summary>
                         <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
@@ -70,7 +70,7 @@
                         </div>
                     </details>
                     <details class="open: bg-white dark:bg-slate-800 dark:open:bg-slate-800 pb-8 rounded-lg">
-                        <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none">
+                        <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">
                             How to play 2048?
                         </summary>
                         <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
@@ -84,11 +84,11 @@
                 <p>Start Game</p>
               </div> -->
               <div class="content__record content mt-6">
-                <h2 class="dark:text-white text-xl font-bold">Your Record</h2>
+                <h2 class="dark:text-white text-xl font-bold menu-title">Your Record</h2>
                 <p class="dark:text-slate-300">Your record will be appeared below.</p>
               </div>
               <div class="content__account content mt-6">
-                <h2 class="dark:text-white text-xl font-bold">Your Account</h2>
+                <h2 class="dark:text-white text-xl font-bold menu-title">Your Account</h2>
                 <p class="dark:text-slate-300">Your account info will be below.</p>
               </div>
             </div>
@@ -173,7 +173,9 @@
         </div>
         <div class="main__container playMode hidden">
           <section class="playMode__chooseMusic playModeMenu active text-center">
-            <p class="dark:text-white text-lg font-bold">Choose background music!</p>
+            <h2 class="dark:text-white text-lg font-bold pb-4 menu-title">Choose background music!</h2>
+            <p class="dark:text-white text-sm font-normal w-2/3 mx-auto">Click the images below.</p>
+            <p class="dark:text-white text-sm font-normal w-2/3 mx-auto">Try and choose one BGM!</p>
             <div id="carouselExampleIndicators" class="carousel slide relative py-4" data-bs-ride="carousel">
               <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
@@ -295,14 +297,14 @@
             <div id="player-fourth" class="hidden"></div>
           </section>
           <section class="playMode__playing playModeMenu text-center">
-            <h2 class="dark:text-white text-xl font-bold">Play Now</h2>
+            <h2 class="dark:text-white text-xl font-bold menu-title">Play Now</h2>
             <div class="btns w-1/5 mx-auto flex justify-center py-4">
               <button type="button" id="startNewGame" class="inline-block rounded-md px-2 py-1 my-2 mx-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">START</button>
               <button type="button" id="resetGame" class="inline-block rounded-md px-2 py-1 my-2 mx-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">RESET</button>
             </div>
             <div class="scoreBoard w-1/2 mx-auto">
-              <h4 class="dark:text-white text-lg font-bold border border-slate-800">Score</h4>
-              <h4 id="scoreBoard" class="dark:text-white text-lg font-bold pd-2 border border-slate-800"><span id="totalScore"></span></h4>
+              <h4 class="dark:text-white text-lg font-bold border border-slate-800 menu-title">Score</h4>
+              <h4 id="scoreBoard" class="dark:text-white text-lg font-bold pd-2 border border-slate-800 menu-title"><span id="totalScore"></span></h4>
             </div>
             <p id="resultText" class="dark:text-slate-300"></p>
             <div class="gameScreen py-4 text-center mx-auto">
@@ -397,7 +399,7 @@
         </div> -->
       </div>
     </main>
-    <footer class="fixed bottom-0 left-6 right-0 text-center bg-white dark:bg-slate-800 text-black dark:text-white">
+    <footer class="fixed bottom-0 left-0 right-0 text-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div class="container px-6">
         <div class="flex justify-center mb-2">
           <a href="#!" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
