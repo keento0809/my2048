@@ -3,6 +3,8 @@
 // youtubePlayerAPI();
 
 // Get DOM
+const header = document.querySelector("header");
+
 const listItems = document.querySelectorAll(".sideBar__listItem");
 const contents = document.querySelectorAll(".content");
 
@@ -57,6 +59,14 @@ let totalScore = 0;
 const lengthOfSquare = 4;
 
 // Build out function
+function handleHeaderTransparent() {
+  if (window.scrollY > 48) header.classList.add("opacity-100", "z-10");
+  else header.classList.remove("opacity-100", "z-10");
+  // console.log(header);
+}
+
+window.addEventListener("scroll", handleHeaderTransparent);
+
 function handleSwitchMenu() {
   let counter = 0;
   while (counter < listItems.length) {
@@ -142,7 +152,7 @@ function generateRandomIndex(val) {
   if (scoreArray[randomNum].textContent == "") {
     addPop(randomNum);
     scoreArray[randomNum].textContent = 2;
-    checkForLose();
+    checkForLose(lengthOfSquare);
   } else {
     // console.log("Generate again ??????");
     generateRandomIndex(val);
@@ -533,11 +543,27 @@ function checkForWin() {
 }
 
 // check for the status if you lose the game or not
-function checkForLose() {
+function checkForLose(num) {
   let numOfZeros = 0;
   for (let i = 0; i < scoreArray.length; i++) {
     if (scoreArray[i].textContent == 0) numOfZeros++;
+    // test
+    if (
+      i < num * num - 1 &&
+      scoreArray[i].textContent == scoreArray[i + 1].textContent
+    ) {
+      console.log("You are not Gameover yet.");
+      return;
+    }
+    if (
+      i < num * 3 &&
+      scoreArray[i].textContent == scoreArray[i + num].textContent
+    ) {
+      console.log("You are not Gameover yet.");
+      return;
+    }
   }
+  // When you really lose...
   if (numOfZeros === 0) {
     finalScoreBoard.textContent = `${totalScoreTextContent.textContent}`;
     modalTrigger.click();
