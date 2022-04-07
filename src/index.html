@@ -198,36 +198,66 @@
                 ></button>
               </div>
               <div class="これかいな carousel-inner relative w-8/12 mx-auto overflow-hidden">
-                <div class="relative carousel-item active float-left w-full cursor-pointer hover:opacity-70 transition duration-700 backdrop">
-                  <!-- src="../image/ruben-ramirez-xhKG01FN2uk-unsplash.jpg" -->
-                  <img
+                <div class="relative carousel-item active float-left w-full cursor-pointer hover:opacity-90 transition duration-700 backdrop">
+                  <!-- <img
                   src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
                     class="block w-full"
                     alt="Wild Landscape"
+                  /> -->
+                  <img
+                  src="../image/ruben-ramirez-xhKG01FN2uk-unsplash.jpg"
+                    class="block w-full bg-cover"
+                    alt="cafe"
                   />
                   <div class="overlay transition duration-700 absolute top-0 left-0">
-                    <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose this BGM</button>
-                    <p>ooo</p>
+                    <h4 class="bgm-title font-bold text-lg dark:text-white">CAFE</h4>
+                    <button id="playSecondBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-bold text-xs uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out leading-4"><ion-icon name="play-outline"></ion-icon></button>
+                    <button id="stopSecondBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <div class="">
+                      <!-- <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button> -->
+                      <button type="button" class="choseBGM bgm-first rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
+                    </div>
                   </div>
                 </div>
-                <div class="relative carousel-item float-left w-full cursor-pointer hover:opacity-70 transition duration-700 backdrop">
-                  <img
+                <div class="relative carousel-item float-left w-full cursor-pointer hover:opacity-90 transition duration-700 backdrop">
+                  <!-- <img
                     src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-                    class="block w-full cursor-pointer hover:opacity-70 transition ease-in-out"
+                    class="block w-full bg-cover"
                     alt="Camera"
+                  /> -->
+                  <img
+                    src="../image/mick-haupt-CbNBjnXXhNg-unsplash.jpg"
+                    class="block w-full bg-cover"
+                    alt="jazz"
                   />
-                  <div class="overlay transition duration-700">
-                    <button type="button" class="absolute top-0 left-1/3 next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose this BGM</button>
+                  <div class="overlay transition duration-700 absolute top-0 left-0">
+                    <h4 class="bgm-title font-bold text-lg dark:text-white">JAZZ</h4>
+                    <button id="playThirdBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="play-outline"></ion-icon></button>
+                    <button id="stopThirdBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <div class="">
+                      <button type="button" class="choseBGM bgm-second rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
+                    </div>
                   </div>
                 </div>
-                <div class="relative carousel-item float-left w-full cursor-pointer hover:opacity-70 transition duration-700 backdrop">
-                  <img
+                <div class="relative carousel-item float-left w-full cursor-pointer hover:opacity-90 transition duration-700 backdrop">
+                  <!-- <img
                     src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-                    class="block w-full cursor-pointer hover:opacity-70 transition ease-in-out"
+                    class="block w-full"
                     alt="Exotic Fruits"
+                  /> -->
+                  <img
+                    src="../image/max-22x7fxFpl_8-unsplash.jpg"
+                    class="block w-full"
+                    alt="rain"
                   />
-                  <div class="overlay transition duration-700">
-                    <button type="button" class="absolute top-0 left-1/3 next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose this BGM</button>
+                  <div class="overlay transition duration-700 absolute top-0 left-0">
+                    <h4 class="bgm-title font-bold text-lg dark:text-white">RAIN</h4>
+                    <button id="playFourthBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="play-outline"></ion-icon></button>
+                    <button id="stopFourthBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out"><ion-icon name="stop-outline"></ion-icon></button>
+                    <div class="">
+                      <!-- <button type="button" class="choseBGM rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button> -->
+                      <button type="button" class="choseBGM bgm-third rounded-md inline-block px-3 py-1 border border-violet-500 bg-violet-500 dark:bg-inherit text-slate-100 dark:text-violet-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-violet-600 hover:shadow-lg focus:bg-violet-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-600 active:shadow-lg transition duration-150 ease-in-out">Choose</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -251,13 +281,14 @@
               </button>
             </div>
             <button type="button" class="backToTop rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">TOP</button>
-            <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">NEXT</button>
-            <button id="playSecondBGM">PLAY</button>
-            <button id="stopSecondBGM">PAUSE</button>
-            <button id="playThirdBGM">PLAY</button>
-            <button id="stopThirdBGM">PAUSE</button>
-            <button id="playFourthBGM">PLAY</button>
-            <button id="stopFourthBGM">PAUSE</button>
+            <!-- <button type="button" class="next rounded-md inline-block px-3 py-1 border border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">NEXT</button> -->
+            
+            <!-- <button id="playSecondBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
+            <button id="stopSecondBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button>
+            <button id="playThirdBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
+            <button id="stopThirdBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button> -->
+            <!-- <button id="playFourthBGM" class="rounded-md inline-block border px-3 py-1 border-lime-400 bg-lime-400 dark:bg-inherit text-slate-100 dark:text-lime-400 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">PLAY</button>
+            <button id="stopFourthBGM" class="rounded-md inline-block px-3 py-1 border border-fuchsia-500 bg-fuchsia-500 dark:bg-inherit text-slate-100 dark:text-fuchsia-500 font-medium text-xs leading-tight uppercase shadow-md hover:bg-fuchsia-600 hover:shadow-lg focus:bg-fuchsia-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-fuchsia-600 active:shadow-lg transition duration-150 ease-in-out">STOP</button> -->
 
             <div id="player-second" class="hidden"></div>
             <div id="player-third" class="hidden"></div>

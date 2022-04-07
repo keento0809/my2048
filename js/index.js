@@ -48,6 +48,8 @@ const stopThirdBGM = document.querySelector("#stopThirdBGM");
 const playFourthBGM = document.querySelector("#playFourthBGM");
 const stopFourthBGM = document.querySelector("#stopFourthBGM");
 
+const choseBgmBtns = document.querySelectorAll(".choseBGM");
+
 // global variables
 let allTds;
 let playModeMenuIndex = 0;
@@ -633,25 +635,32 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
+// let finalChosenVideoId = "66a_QiGd1ks&t=2s";
+
 var player;
 var player2;
 var player3;
 var player4;
+
+// "pw2d_INTZyM&t=562s"
+
+const ids = ["G4TUmkg4ojg", "NDh0oRih_3c", "nuA9NsXo4Fg"];
+
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player("player", {
-    height: "200",
-    width: "400",
-    events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
-      onClick: onPlayerReady,
-    },
-    playerVars: {
-      loop: 1,
-      rel: 0,
-    },
-    videoId: "G4TUmkg4ojg",
-  });
+  // player = new YT.Player("player", {
+  //   height: "200",
+  //   width: "400",
+  //   events: {
+  //     onReady: onPlayerReady,
+  //     onStateChange: onPlayerStateChange,
+  //     onClick: onPlayerReady,
+  //   },
+  //   playerVars: {
+  //     loop: 1,
+  //     rel: 0,
+  //   },
+  //   videoId: "G4TUmkg4ojg",
+  // });
   player2 = new YT.Player("player-second", {
     height: "200",
     width: "400",
@@ -664,7 +673,7 @@ function onYouTubeIframeAPIReady() {
       loop: 1,
       rel: 0,
     },
-    videoId: "G4TUmkg4ojg",
+    videoId: ids[0],
   });
   player3 = new YT.Player("player-third", {
     height: "200",
@@ -678,7 +687,7 @@ function onYouTubeIframeAPIReady() {
       loop: 1,
       rel: 0,
     },
-    videoId: "NDh0oRih_3c",
+    videoId: ids[1],
   });
   player4 = new YT.Player("player-fourth", {
     height: "200",
@@ -692,9 +701,11 @@ function onYouTubeIframeAPIReady() {
       loop: 1,
       rel: 0,
     },
-    videoId: "nuA9NsXo4Fg",
+    videoId: ids[2],
   });
 }
+
+// console.log(player.videoId);s
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
@@ -711,9 +722,67 @@ function stopVideo() {
   player.stopVideo();
 }
 
+// function setVideoIdToPlayer(chosenVideoId) {
+//   finalChosenVideoId = chosenVideoId;
+//   console.log(finalChosenVideoId);
+// }
+
+function handleForwardBGM() {
+  console.log(this);
+  if (this.classList.contains("bgm-first")) {
+    // chosenVideoId = ids[0];
+    startNewGameBtn.classList.add("bgm-first");
+    resetGameBtn.classList.add("bgm-first");
+  }
+  if (this.classList.contains("bgm-second")) {
+    // chosenVideoId = ids[1];
+    startNewGameBtn.classList.add("bgm-second");
+    resetGameBtn.classList.add("bgm-second");
+  }
+  if (this.classList.contains("bgm-third")) {
+    chosenVideoId = ids[2];
+    startNewGameBtn.classList.add("bgm-third");
+    resetGameBtn.classList.add("bgm-third");
+  }
+  // setVideoIdToPlayer(chosenVideoId);
+  // startNewGameBtn.classList.add("bgm-second")
+  handleNextPlayMenu();
+}
+
+function handlePlayBgm() {
+  // console.log(this);
+  if (this.classList.contains("bgm-first")) {
+    player2.playVideo();
+  }
+  if (this.classList.contains("bgm-second")) {
+    player3.playVideo();
+  }
+  if (this.classList.contains("bgm-third")) {
+    player4.playVideo();
+  }
+  // player.playVideo();
+}
+
+function handleStopBgm() {
+  if (this.classList.contains("bgm-first")) {
+    player2.stopVideo();
+  }
+  if (this.classList.contains("bgm-second")) {
+    player3.stopVideo();
+  }
+  if (this.classList.contains("bgm-third")) {
+    player4.stopVideo();
+  }
+}
+
+// function handlePlaySoundTrial(player) {
+//   player.stopVideo();
+//   playSecondBGM.innerHTML = <ion-icon name="pause-outline"></ion-icon>;
+// }
+
 // pauseBtn.addEventListener("click", () => player.pauseVideo());
-startNewGameBtn.addEventListener("click", () => player.playVideo());
-resetGameBtn.addEventListener("click", () => player.stopVideo());
+startNewGameBtn.addEventListener("click", handlePlayBgm);
+resetGameBtn.addEventListener("click", () => handleStopBgm);
 
 playSecondBGM.addEventListener("click", () => player2.playVideo());
 stopSecondBGM.addEventListener("click", () => player2.stopVideo());
@@ -723,6 +792,8 @@ stopThirdBGM.addEventListener("click", () => player3.stopVideo());
 
 playFourthBGM.addEventListener("click", () => player4.playVideo());
 stopFourthBGM.addEventListener("click", () => player4.stopVideo());
+
+choseBgmBtns.forEach((btn) => btn.addEventListener("click", handleForwardBGM));
 
 function handleKeydown(e) {
   e.keyCode === 37 && keyLeft(lengthOfSquare);
