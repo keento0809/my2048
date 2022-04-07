@@ -164,6 +164,31 @@ function handleCreateGameTable(num) {
   }
 }
 
+// function addEvents() {
+//   window.addEventListener("keydown", handleKeydown);
+//   swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
+//   swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
+//   swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
+//   swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
+//   console.log("events added ...???");
+// }
+
+let boolDisabled = false;
+
+function swipeButtonDisabled() {
+  swipeRightBtn.disabled = !boolDisabled;
+  swipeLeftBtn.disabled = !boolDisabled;
+  swipeUpBtn.disabled = !boolDisabled;
+  swipeDownBtn.disabled = !boolDisabled;
+}
+
+function swipeButtonsEnabled() {
+  swipeRightBtn.disabled = false;
+  swipeLeftBtn.disabled = false;
+  swipeUpBtn.disabled = false;
+  swipeDownBtn.disabled = false;
+}
+
 // start game
 function handleStartGame(num) {
   // handleCreateGameTable(num);
@@ -173,14 +198,16 @@ function handleStartGame(num) {
   startNewGameBtn.disabled = true;
   // startNewGameBtn.classList.add("disabledBtn");
   resetGameBtn.disabled = false;
+  swipeButtonsEnabled();
   checkBackgroundColor(num);
-  // test
-  window.addEventListener("keydown", handleKeydown);
-  swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
-  swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
-  swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
-  swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 }
+
+window.addEventListener("keydown", handleKeydown);
+swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
+swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
+swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
+swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
+console.log("events added ...???");
 
 let unique = false;
 
@@ -198,6 +225,7 @@ function handleSwipeRight(num) {
         parseInt(totalThree),
         parseInt(totalFour),
       ];
+
       // console.log(row);
 
       // return the number if it's true (not 0)
@@ -351,7 +379,6 @@ function handleSwipeUp(num) {
 }
 
 function togglePop(index, isRow) {
-  console.log("WTF, toggling...");
   let val = isRow ? 1 : lengthOfSquare;
   scoreArray[index + val].classList.add("pop", "bgChange-initial");
   setTimeout(() => {
@@ -431,12 +458,10 @@ function checkBackgroundColor(num) {
     setTimeout(() => {
       scoreArray[i].className = "td tdStyle";
     }, 220);
-    // if (scoreArray[i].contains(`panel-number`)) console.log("Containing!!");
     if (scoreArray[i].textContent == "") {
       scoreArray[i].className = "td tdStyle";
       continue;
     }
-    // console.log(scoreArray[i].textContent);
     let n = 0;
     setTimeout(() => {
       while (n < scoreNumArr.length) {
@@ -447,14 +472,13 @@ function checkBackgroundColor(num) {
           scoreArray[i].classList.add(
             // `panel-number-${scoreNumArr[n]} dark:bg-dark-panel-number-${scoreNumArr[n]}`
             `panel-number-${scoreNumArr[n]}`
-            // "dark:text-black"
           );
           break;
         }
         n++;
       }
     }, 230);
-    console.log(scoreArray[i].textContent == "");
+    // console.log(scoreArray[i].textContent == "");
   }
 }
 
@@ -519,12 +543,13 @@ function checkForLose() {
     setTimeout(() => {
       resetGameBtn.click();
     }, 2000);
-    // window.removeEventListener("keydown", handleKeydown);
-    removeEvents();
-    // swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
-    // swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
-    // swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
-    // swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
+    // removeEvents();
+    window.removeEventListener("keydown", handleKeydown);
+    swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+    swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+    swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+    swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
+    console.log("events removed ...???");
   }
 }
 
@@ -541,13 +566,14 @@ function handleInitialization(num) {
   }
 }
 
-function removeEvents() {
-  window.removeEventListener("keydown", handleKeydown);
-  swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
-  swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
-  swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
-  swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
-}
+// function removeEvents() {
+//   window.removeEventListener("keydown", handleKeydown);
+//   swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+//   swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+//   swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+//   swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
+//   console.log("events removed ...???");
+// }
 
 // test
 function resetBackgroundColor(num) {
@@ -560,6 +586,7 @@ function handleResetGame(num) {
   for (let i = 0; i < num * num; i++) {
     // original code
     // if (scoreArray[i].textContent != 0) scoreArray[i].textContent = 0;
+    // scoreArray[i] = "";
     scoreArray[i].textContent = "";
   }
   console.log(scoreArray);
@@ -568,15 +595,17 @@ function handleResetGame(num) {
   resultText.textContent = "";
   startNewGameBtn.disabled = false;
   resetGameBtn.disabled = true;
-  // resetGameBtn.classList.add("disabledBtn");
-  // window.removeEventListener("keydown", handleKeydown);
-  removeEvents();
+
+  window.removeEventListener("keydown", handleKeydown);
+  swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+  swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+  swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+  swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
+  console.log("events removed ...???");
+
+  swipeButtonDisabled();
   // test
   resetBackgroundColor(num);
-  // swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
-  // swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
-  // swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
-  // swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
 }
 
 // Hook up the event
@@ -608,11 +637,6 @@ startNewGameBtn.addEventListener("click", () =>
   handleStartGame(lengthOfSquare)
 );
 resetGameBtn.addEventListener("click", () => handleResetGame(lengthOfSquare));
-// temporary changing code
-// swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
-// swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
-// swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
-// swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 
 // modalTrigger.addEventListener("click",)
 
@@ -806,5 +830,3 @@ function handleKeydown(e) {
   e.keyCode === 39 && keyRight(lengthOfSquare);
   e.keyCode === 40 && keyDown(lengthOfSquare);
 }
-
-// window.addEventListener("keydown", handleKeydown);
