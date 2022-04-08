@@ -199,9 +199,10 @@ swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
 
 let unique = false;
 
-function quickCheckBackgroundColor() {
+function quickCheckBackgroundColor(num1, num2, num3, num4) {
   // test
-  console.log("color change now ... !!!");
+  console.log(num1, num2, num3, num4);
+  console.log("--------------------------");
 }
 
 // swipe right
@@ -237,9 +238,7 @@ function handleSwipeRight(num) {
       scoreArray[i + 2].textContent = newRow[2];
       scoreArray[i + 3].textContent = newRow[3];
 
-      quickCheckBackgroundColor();
-
-      console.log(
+      quickCheckBackgroundColor(
         scoreArray[i].textContent,
         scoreArray[i + 1].textContent,
         scoreArray[i + 2].textContent,
@@ -370,15 +369,15 @@ function togglePop(index, isRow) {
 // combine each rows
 function combineRow(direction) {
   for (let i = 0; i < 15; i++) {
-    if (
-      i >= 2 &&
-      scoreArray[i - 2].textContent != "" &&
-      scoreArray[i - 1].textContent != "" &&
-      scoreArray[i].textContent != "" &&
-      scoreArray[i + 1].textContent != ""
-    ) {
-      console.log("bigo ~~~~~!!");
-    }
+    // if (
+    //   i >= 2 &&
+    //   scoreArray[i - 2].textContent != "" &&
+    //   scoreArray[i - 1].textContent != "" &&
+    //   scoreArray[i].textContent != "" &&
+    //   scoreArray[i + 1].textContent != ""
+    // ) {
+    //   console.log("bigo ~~~~~!!");
+    // }
     if (
       scoreArray[i].textContent != "" &&
       scoreArray[i + 1].textContent != ""
@@ -497,7 +496,17 @@ function checkForWin() {
   for (let i = 0; i < scoreArray.length; i++) {
     if (scoreArray[i].textContent == 2048) {
       resultText.textContent = "You win the game!";
+      modalTriggerWin.click();
+      setTimeout(() => {
+        resetGameBtn.click();
+      }, 2000);
     }
+    // removeEvents();
+    window.removeEventListener("keydown", handleKeydown);
+    swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
+    swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
+    swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
+    swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
   }
 }
 
