@@ -39,6 +39,8 @@ const resultText = document.querySelector("#resultText");
 const totalScoreTextContent = document.querySelector("#totalScore");
 
 const modalTrigger = document.querySelector("#modalTrigger");
+const modalTriggerWin = document.querySelector("#modalTrigger-win");
+console.log(modalTriggerWin);
 const finalScoreBoard = document.querySelector("#finalScoreBoard");
 
 const scoreBoard = document.querySelector("#scoreBoard");
@@ -62,7 +64,6 @@ const lengthOfSquare = 4;
 function handleHeaderTransparent() {
   if (window.scrollY > 48) header.classList.add("opacity-100", "z-10");
   else header.classList.remove("opacity-100", "z-10");
-  // console.log(header);
 }
 
 window.addEventListener("scroll", handleHeaderTransparent);
@@ -112,10 +113,6 @@ function handleToggleDarkMode() {
   html.classList.toggle("dark");
 }
 
-function handleShowOverlay() {
-  // console.log("hover now");
-}
-
 //
 //
 //
@@ -138,7 +135,6 @@ function scorePop() {
 }
 
 function addPop(index) {
-  console.log("Add pop popping...");
   scoreArray[index].classList.add("pop", "bgChange");
   setTimeout(() => {
     scoreArray[index].classList.remove("pop", "bgChange");
@@ -148,13 +144,11 @@ function addPop(index) {
 // generate random index and apply that as the hash index
 function generateRandomIndex(val) {
   const randomNum = Math.floor(Math.random() * (val * val));
-  console.log(scoreArray[randomNum].textContent);
   if (scoreArray[randomNum].textContent == "") {
     addPop(randomNum);
     scoreArray[randomNum].textContent = 2;
     checkForLose(lengthOfSquare);
   } else {
-    // console.log("Generate again ??????");
     generateRandomIndex(val);
   }
 }
@@ -173,15 +167,6 @@ function handleCreateGameTable(num) {
     scoreArray.push(td);
   }
 }
-
-// function addEvents() {
-//   window.addEventListener("keydown", handleKeydown);
-//   swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
-//   swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
-//   swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
-//   swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
-//   console.log("events added ...???");
-// }
 
 let boolDisabled = false;
 
@@ -219,9 +204,13 @@ swipeRightBtn.addEventListener("click", () => keyRight(lengthOfSquare));
 swipeLeftBtn.addEventListener("click", () => keyLeft(lengthOfSquare));
 swipeUpBtn.addEventListener("click", () => keyUp(lengthOfSquare));
 swipeDownBtn.addEventListener("click", () => keyDown(lengthOfSquare));
-console.log("events added ...???");
 
 let unique = false;
+
+function quickCheckBackgroundColor() {
+  // test
+  console.log("color change now ... !!!");
+}
 
 // swipe right
 function handleSwipeRight(num) {
@@ -238,8 +227,6 @@ function handleSwipeRight(num) {
         parseInt(totalFour),
       ];
 
-      // console.log(row);
-
       // return the number if it's true (not 0)
       let filteredRow = row.filter((number) => {
         return number;
@@ -252,12 +239,20 @@ function handleSwipeRight(num) {
 
       // create new array combining two arrays (zeros,filteredRow) without changing original ones
       let newRow = zeros.concat(filteredRow);
-      console.log(newRow);
 
       scoreArray[i].textContent = newRow[0];
       scoreArray[i + 1].textContent = newRow[1];
       scoreArray[i + 2].textContent = newRow[2];
       scoreArray[i + 3].textContent = newRow[3];
+
+      quickCheckBackgroundColor();
+
+      console.log(
+        scoreArray[i].textContent,
+        scoreArray[i + 1].textContent,
+        scoreArray[i + 2].textContent,
+        scoreArray[i + 3].textContent
+      );
 
       if (
         (scoreArray[i + 1].textContent === scoreArray[i + 2].textContent) ===
@@ -308,16 +303,6 @@ function handleSwipeLeft(num) {
       scoreArray[i + 1].textContent = newRow[1];
       scoreArray[i + 2].textContent = newRow[2];
       scoreArray[i + 3].textContent = newRow[3];
-
-      if (
-        scoreArray[i].textContent != "" &&
-        scoreArray[i + 1].textContent != "" &&
-        scoreArray[i + 2].textContent != "" &&
-        scoreArray[i + 3].textContent != "" &&
-        scoreArray[i].textContent === scoreArray[i + 1].textContent &&
-        scoreArray[i + 2].textContent === scoreArray[i + 3].textContent
-      )
-        console.log("double combo 777 !!!");
     }
   }
 }
@@ -348,16 +333,6 @@ function handleSwipeDown(num) {
     scoreArray[i + num].textContent = newColumn[1];
     scoreArray[i + num * 2].textContent = newColumn[2];
     scoreArray[i + num * 3].textContent = newColumn[3];
-
-    if (
-      scoreArray[i].textContent != "" &&
-      scoreArray[i + num].textContent != "" &&
-      scoreArray[i + num].textContent != "" &&
-      scoreArray[i + num].textContent != "" &&
-      scoreArray[i].textContent === scoreArray[i + num].textContent &&
-      scoreArray[i + num].textContent === scoreArray[i + num].textContent
-    )
-      console.log("double combo 777 !!!");
   }
 }
 
@@ -409,8 +384,6 @@ function combineRow(direction) {
       scoreArray[i - 1].textContent != "" &&
       scoreArray[i].textContent != "" &&
       scoreArray[i + 1].textContent != ""
-      // scoreArray[i - 2].textContent == scoreArray[i - 1].textContent &&
-      // scoreArray[i].textContent == scoreArray[i + 1].textContent
     ) {
       console.log("bigo ~~~~~!!");
     }
@@ -422,11 +395,10 @@ function combineRow(direction) {
         let combinedTotal =
           parseInt(scoreArray[i].textContent) +
           parseInt(scoreArray[i + 1].textContent);
-        // console.log(combinedTotal == NaN);
-        // temporary
-        // if (combinedTotal == NaN && direction === "right") togglePop(i, true);
+
         if (direction === "right") togglePop(i, true);
         else if (direction === "left") togglePop(i - 1, true);
+
         scoreArray[i].textContent = combinedTotal;
         scoreArray[i + 1].textContent = 0;
         totalScore += combinedTotal;
@@ -470,6 +442,7 @@ function checkBackgroundColor(num) {
     setTimeout(() => {
       scoreArray[i].className = "td tdStyle";
     }, 220);
+    // original code
     if (scoreArray[i].textContent == "") {
       scoreArray[i].className = "td tdStyle";
       continue;
@@ -478,29 +451,23 @@ function checkBackgroundColor(num) {
     setTimeout(() => {
       while (n < scoreNumArr.length) {
         if (scoreArray[i].textContent == scoreNumArr[n]) {
-          console.log(scoreNumArr[n]);
           // test
           // scoreArray[i].className = "td tdStyle";
-          scoreArray[i].classList.add(
-            // `panel-number-${scoreNumArr[n]} dark:bg-dark-panel-number-${scoreNumArr[n]}`
-            `panel-number-${scoreNumArr[n]}`
-          );
+          scoreArray[i].classList.add(`panel-number-${scoreNumArr[n]}`);
           break;
         }
         n++;
       }
+      // test
     }, 230);
-    // console.log(scoreArray[i].textContent == "");
   }
 }
 
 // commands
 function keyRight(num) {
   handleSwipeRight(num);
-  console.log("First handleSwipeRight");
   combineRow("right");
   handleSwipeRight(num);
-  console.log("Second handleSwipeRight");
   generateRandomIndex(num);
   // test
   checkBackgroundColor(num);
@@ -552,14 +519,12 @@ function checkForLose(num) {
       i < num * num - 1 &&
       scoreArray[i].textContent == scoreArray[i + 1].textContent
     ) {
-      console.log("You are not Gameover yet.");
       return;
     }
     if (
       i < num * 3 &&
       scoreArray[i].textContent == scoreArray[i + num].textContent
     ) {
-      console.log("You are not Gameover yet.");
       return;
     }
   }
@@ -577,7 +542,6 @@ function checkForLose(num) {
     swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
     swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
     swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
-    console.log("events removed ...???");
   }
 }
 
@@ -594,15 +558,6 @@ function handleInitialization(num) {
   }
 }
 
-// function removeEvents() {
-//   window.removeEventListener("keydown", handleKeydown);
-//   swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
-//   swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
-//   swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
-//   swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
-//   console.log("events removed ...???");
-// }
-
 // test
 function resetBackgroundColor(num) {
   for (let i = 0; i < num * num; i++) {
@@ -617,7 +572,6 @@ function handleResetGame(num) {
     // scoreArray[i] = "";
     scoreArray[i].textContent = "";
   }
-  console.log(scoreArray);
   totalScore = 0;
   totalScoreTextContent.textContent = totalScore;
   resultText.textContent = "";
@@ -629,7 +583,6 @@ function handleResetGame(num) {
   swipeLeftBtn.removeEventListener("click", () => keyLeft(lengthOfSquare));
   swipeUpBtn.removeEventListener("click", () => keyUp(lengthOfSquare));
   swipeDownBtn.removeEventListener("click", () => keyDown(lengthOfSquare));
-  console.log("events removed ...???");
 
   swipeButtonDisabled();
   // test
@@ -657,9 +610,9 @@ nextButtons.forEach((button) =>
 
 toggleDarkMode.addEventListener("click", handleToggleDarkMode);
 
-overlays.forEach((overlay) =>
-  overlay.addEventListener("mousemove", handleShowOverlay)
-);
+// overlays.forEach((overlay) =>
+//   overlay.addEventListener("mousemove", handleShowOverlay)
+// );
 
 startNewGameBtn.addEventListener("click", () =>
   handleStartGame(lengthOfSquare)
@@ -671,10 +624,6 @@ resetGameBtn.addEventListener("click", () => handleResetGame(lengthOfSquare));
 // Youtube Player API
 //
 //
-
-// const stopBtn = document.querySelector("#stop");
-// const pauseBtn = document.querySelector("#pause");
-// const playBtn = document.querySelector("#play");
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement("script");
@@ -697,20 +646,6 @@ var player4;
 const ids = ["G4TUmkg4ojg", "NDh0oRih_3c", "nuA9NsXo4Fg"];
 
 function onYouTubeIframeAPIReady() {
-  // player = new YT.Player("player", {
-  //   height: "200",
-  //   width: "400",
-  //   events: {
-  //     onReady: onPlayerReady,
-  //     onStateChange: onPlayerStateChange,
-  //     onClick: onPlayerReady,
-  //   },
-  //   playerVars: {
-  //     loop: 1,
-  //     rel: 0,
-  //   },
-  //   videoId: "G4TUmkg4ojg",
-  // });
   player2 = new YT.Player("player-second", {
     height: "200",
     width: "400",
@@ -755,8 +690,6 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-// console.log(player.videoId);s
-
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   //   event.target.mute();
@@ -772,11 +705,6 @@ function stopVideo() {
   player.stopVideo();
 }
 
-// function setVideoIdToPlayer(chosenVideoId) {
-//   finalChosenVideoId = chosenVideoId;
-//   console.log(finalChosenVideoId);
-// }
-
 function handleForwardBGM() {
   if (startNewGameBtn.classList.contains("bgm-first"))
     startNewGameBtn.classList.remove("bgm-first");
@@ -786,12 +714,10 @@ function handleForwardBGM() {
     startNewGameBtn.classList.remove("bgm-third");
 
   if (this.classList.contains("bgm-first")) {
-    // chosenVideoId = ids[0];
     startNewGameBtn.classList.add("bgm-first");
     resetGameBtn.classList.add("bgm-first");
   }
   if (this.classList.contains("bgm-second")) {
-    // chosenVideoId = ids[1];
     startNewGameBtn.classList.add("bgm-second");
     resetGameBtn.classList.add("bgm-second");
   }
@@ -799,13 +725,10 @@ function handleForwardBGM() {
     startNewGameBtn.classList.add("bgm-third");
     resetGameBtn.classList.add("bgm-third");
   }
-  // setVideoIdToPlayer(chosenVideoId);
-  // startNewGameBtn.classList.add("bgm-second")
   handleNextPlayMenu();
 }
 
 function handlePlayBgm() {
-  // console.log(this);
   if (this.classList.contains("bgm-first")) {
     player2.playVideo();
   }
@@ -815,7 +738,6 @@ function handlePlayBgm() {
   if (this.classList.contains("bgm-third")) {
     player4.playVideo();
   }
-  // player.playVideo();
 }
 
 function handleStopBgm() {
@@ -830,12 +752,6 @@ function handleStopBgm() {
   }
 }
 
-// function handlePlaySoundTrial(player) {
-//   player.stopVideo();
-//   playSecondBGM.innerHTML = <ion-icon name="pause-outline"></ion-icon>;
-// }
-
-// pauseBtn.addEventListener("click", () => player.pauseVideo());
 startNewGameBtn.addEventListener("click", handlePlayBgm);
 resetGameBtn.addEventListener("click", handleStopBgm);
 
