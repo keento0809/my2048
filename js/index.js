@@ -54,6 +54,8 @@ const stopFourthBGM = document.querySelector("#stopFourthBGM");
 
 const choseBgmBtns = document.querySelectorAll(".choseBGM");
 
+const scoreOnMyPage = document.querySelector("#scoreOnMyPage");
+
 // global variables
 let allTds;
 let playModeMenuIndex = 0;
@@ -537,6 +539,13 @@ function checkForLose(num) {
     setTimeout(() => {
       resetGameBtn.click();
     }, 2000);
+    if (
+      scoreOnMyPage.textContent == 0 ||
+      parseInt(scoreOnMyPage.textContent) <
+        parseInt(`${totalScoreTextContent.textContent}`)
+    ) {
+      scoreOnMyPage.textContent = `${totalScoreTextContent.textContent}`;
+    }
     // removeEvents();
     window.removeEventListener("keydown", handleKeydown);
     swipeRightBtn.removeEventListener("click", () => keyRight(lengthOfSquare));
