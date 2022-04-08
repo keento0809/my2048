@@ -60,14 +60,6 @@ let playModeMenuIndex = 0;
 let totalScore = 0;
 const lengthOfSquare = 4;
 
-// Build out function
-function handleHeaderTransparent() {
-  if (window.scrollY > 48) header.classList.add("opacity-100", "z-10");
-  else header.classList.remove("opacity-100", "z-10");
-}
-
-window.addEventListener("scroll", handleHeaderTransparent);
-
 function handleSwitchMenu() {
   let counter = 0;
   while (counter < listItems.length) {
