@@ -1,0 +1,175 @@
+.container {
+  width: 95%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+}
+
+.main__container,
+.main__container.playMode {
+  min-height: 200px;
+}
+
+.main__container.hidden,
+.main__container.playMode.hidden {
+  display: none;
+}
+
+.contents {
+  flex: 2;
+}
+
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+.sideBar__listItem {
+  padding: 0.5rem 0;
+  border-radius: 8px;
+}
+
+.playModeMenu {
+  display: none;
+}
+
+.playModeMenu.active {
+  display: block;
+}
+
+.overlay {
+  opacity: 0;
+}
+
+.backdrop:hover .overlay {
+  opacity: 1;
+  z-index: 5;
+  transition: 0.7s;
+}
+
+.gameTable {
+  color: #000;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.9s ease;
+}
+
+.td {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.tdStyle {
+  border-color: rgb(253, 233, 195);
+  /* background-color: lightyellow; */
+}
+
+/* animation */
+.pop {
+  /* color: red; */
+  animation: popping;
+  animation-duration: 0.4s;
+}
+
+.scorePop {
+  animation: scorePopping;
+  animation-duration: 0.4s;
+}
+
+.disabledBtn {
+  background-color: -internal-light-dark(
+    rgba(239, 239, 239, 0.3),
+    rgba(19, 1, 1, 0.3)
+  );
+  color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
+  border-color: -internal-light-dark(
+    rgba(118, 118, 118, 0.3),
+    rgba(195, 195, 195, 0.3)
+  );
+}
+
+.bgChange {
+  /* background-color: orange; */
+  background-color: rgb(255, 255, 184);
+  border-color: orange;
+  box-shadow: 0 0 1rem orange;
+}
+
+.bgChange-initial {
+  /* background-color: violet; */
+  border-color: violet;
+  box-shadow: 0 0 0.8rem violet;
+}
+
+.bgm-title,
+.menu-title {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@keyframes popping {
+  0%,
+  100% {
+    transform: none;
+  }
+  40% {
+    transform: scaleY(1.5);
+  }
+}
+
+@keyframes scorePopping {
+  0%,
+  100% {
+    transform: none;
+  }
+  40% {
+    transform: scale(1.5);
+  }
+}
+
+.panel-number-2 {
+  background-color: rgb(255, 255, 184);
+}
+.panel-number-4 {
+  background-color: rgb(245, 245, 245);
+}
+.panel-number-8 {
+  background-color: rgb(255, 162, 125);
+}
+.panel-number-16 {
+  background-color: rgb(153, 255, 250);
+}
+.panel-number-32 {
+  background-color: rgb(255, 146, 146);
+}
+.panel-number-64 {
+  background-color: lightpink;
+}
+.panel-number-128 {
+  background-color: rgb(255, 255, 97);
+}
+.panel-number-256 {
+  background-color: rgb(153, 229, 252);
+}
+.panel-number-512 {
+  background-color: rgb(255, 173, 244);
+}
+.panel-number-1024 {
+  background-color: rgb(188, 255, 157);
+}
+.panel-number-2048 {
+  background-color: yellow;
+}
