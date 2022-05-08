@@ -19,9 +19,9 @@
         </span>
       </div>
     </header>
-    <main class="main pt-12 pb-40">
+    <main class="main pt-12 pb-40 min-h-screen">
       <div class="container dark:border-white w-11/12 mx-auto">
-        <div class="main__container flex flex-row min-h-full">
+        <div class="main__container pt-4 flex flex-row min-h-full">
           <section class="sideBar flex-none">
             <ul class="sideBar__list">
               <li class="sideBar__listItem transition duration-500 hover:bg-lime-200 active:bg-lime-400 dark:active:bg-violet-600 dark:hover:bg-violet-500 leading-4 my-6 px-2 active" id="0" >
@@ -32,63 +32,61 @@
                   ><ion-icon name="help-circle-outline"></ion-icon>
                 </a>
               </li>
-              <!-- <li class="sideBar__listItem" id="2">
-                <a href="#">PLAY </a>
-              </li> -->
               <li class="sideBar__listItem transition duration-500 hover:bg-lime-200 active:bg-lime-400 dark:active:bg-violet-600 dark:hover:bg-violet-500 leading-4 my-6 px-2" id="2">
                 <a href="#" class="text-slate-700 dark:text-slate-300 text-2xl leading-4"
                   ><ion-icon name="recording-outline"></ion-icon>
                 </a>
               </li>
-              <li class="sideBar__listItem transition duration-500 hover:bg-lime-200 active:bg-lime-400 dark:active:bg-violet-600 dark:hover:bg-violet-500 leading-4 my-6 px-2" id="3">
+              <!-- <li class="sideBar__listItem transition duration-500 hover:bg-lime-200 active:bg-lime-400 dark:active:bg-violet-600 dark:hover:bg-violet-500 leading-4 my-6 px-2" id="3">
                 <a href="#" class="text-slate-700 dark:text-slate-300 text-2xl leading-4"
                   ><ion-icon name="person-outline"></ion-icon>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </section>
           <section class="contents grow">
             <div class="content__container pt-2 px-6 grow text-center">
               <div class="content__home content mt-6 active">
                 <h2 class="dark:text-white font-bold text-xl menu-title">2048 - HOME</h2>
-                <div class="cursor-pointer transition duration-700 hover:opacity-70 backdrop w-1/2 mx-auto relative">
+                <div class="cursor-pointer transition duration-700 hover:opacity-70 backdrop w-9/12 mx-auto relative">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/2048_win.png/330px-2048_win.png" alt="dummyImage" class="py-10 text-center mx-auto cursor-pointer transition ease-in-out">
                   <div class="overlay transition duration-700 absolute top-1/2 left-1/2 transform: -translate-x-1/2 -translate-y-1/2">
-                    <button type="button" id="startPlayInOverlay" class="rounded-md inline-block px-3 py-1 bg-lime-400 border border-lime-400 dark:bg-inherit dark:border-lime-400 dark:text-lime-400 text-slate-100 font-medium text-xs leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg">Play</button>
+                    <button type="button" id="startPlayInOverlay" class="rounded-md inline-block px-6 py-2 bg-lime-400 border border-lime-400 dark:bg-inherit dark:border-lime-400 dark:text-lime-400 text-slate-100 font-medium text-md leading-tight uppercase shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg">Play</button>
                   </div>
                 </div>
-                <button type="button" id="startPlay" class="rounded-md inline-block px-3 py-1 bg-lime-400 border border-lime-400 dark:bg-inherit dark:border-lime-400 dark:text-lime-400 text-slate-100 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Play</button>
+                <button type="button" id="startPlay" class="rounded-md inline-block px-6 py-2 bg-lime-400 border border-lime-400 dark:bg-inherit dark:border-lime-400 dark:text-lime-400 text-slate-100 font-medium text-md leading-tight uppercase rounded shadow-md hover:bg-lime-500 hover:shadow-lg focus:bg-lime-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-600 active:shadow-lg transition duration-150 ease-in-out">Play</button>
               </div>
-              <div class="content__about content mt-6">
-                <div class="mx-auto p-1">
+              <div class="content__about content mt-6 lg:w-10/12 lg:mx-auto">
+                <div class="mx-auto">
                     <h2 class="dark:text-white font-bold text-xl menu-title pb-10">About 2048</h2>
                     <details class="open: bg-white dark:bg-slate-800 dark:open:bg-slate-800 pb-8 rounded-lg">
                         <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">
                             What is 2048 all about?
                         </summary>
-                        <div class="mt-3 pb-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-3/4 mx-auto text-left">
+                        <div class="mt-3 pb-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-full mx-auto text-left">
                             <p class="text-left">&nbsp;2048 is a single-player sliding tile puzzle video game written by Italian web developer Gabriele Cirulli and published on GitHub. The objective of the game is to slide numbered tiles on a grid to combine them to create a tile with the number 2048; however, one can continue to play the game after reaching the goal, creating tiles with larger numbers. It was originally written in JavaScript and CSS over a weekend, and released on 9 March 2014 as free and open-source software subject to the MIT License. </p>
                             <br>
-                            <p class="pt-2 text-center text-xs">&nbsp;Reference: https://en.wikipedia.org/wiki/2048_(video_game)</p>
+                            <p class="pt-2 text-left text-xs">Reference: https://en.wikipedia.org/wiki/2048_(video_game)</p>
                           </div>
                     </details>
                     <details class="open: bg-white dark:bg-slate-800 dark:open:bg-slate-800 pb-8 rounded-lg">
                         <summary class="text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">
                             How to play 2048?
                         </summary>
-                        <div class="mt-3 pb-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-3/4 mx-auto text-left">
+                        <div class="mt-3 pb-3 text-sm leading-6 text-slate-600 dark:text-slate-400 w-full mx-auto text-left">
                             <p class="text-left">&nbsp;Basically, 2048 presents with with a 4×4 grid. When you start the game, there will be two “tiles” on the grid, each displaying the number 2 or 4. You hit the arrow keys on your keyboard to move the tiles around — and also to generate new tiles, which will also be valued at 2 or 4. When two equal tiles collide, they combine to give you one greater tile that displays their sum. The more you do this, obviously, the higher the tiles get and the more crowded the board becomes. Your objective is to reach 2048 before the board fills up.</p>
                             <br>
-                            <p class="pt-2 text-center text-xs">&nbsp;Reference: https://www.washingtonpost.com/news/arts-and-entertainment/wp/2014/04/23/everything-you-ever-wanted-to-know-about-2048-the-internets-latest-impossible-hit-game/</p>
+                            <p class="pt-2 text-left text-xs">&nbsp;Reference: https://www.washingtonpost.com/news/arts-and-entertainment/wp/2014/04/23/everything-you-ever-wanted-to-know-about-2048-the-internets-latest-impossible-hit-game/</p>
                           </div>
                     </details>
                 </div>
               </div>
               <div class="content__record content mt-6">
                 <h2 class="dark:text-white text-xl font-bold menu-title pb-8">Your Record</h2>
-                <p class="dark:text-slate-300">Your record will be appeared below.</p>
+                <h4 class="pl-2 text-lg font-bold leading-6 text-slate-900 dark:text-white select-none menu-title">Best Score</h4>
+                    <p id="scoreOnMyPage" class="p-2 text-md font-normal leading-6 text-red-400 dark:text-red-500 select-none menu-title">0</p>
               </div>
-              <div class="content__account content mt-6">
+              <!-- <div class="content__account content mt-6">
                 <h2 class="dark:text-white text-xl font-bold menu-title pb-8">Your Account</h2>
                 <ul>
                   <li class="pb-6">
@@ -104,8 +102,7 @@
                     <p class="p-2 text-base font-normal leading-4 text-slate-700 dark:text-slate-300 select-none menu-title">**********</p>
                   </li>
                 </ul>
-                <!-- <p class="dark:text-slate-300">Your account info will be below.</p> -->
-              </div>
+              </div> -->
             </div>
           </section>
         </div>
@@ -137,7 +134,7 @@
                   aria-label="Slide 3"
                 ></button>
               </div>
-              <div class="これかいな carousel-inner relative w-8/12 mx-auto overflow-hidden">
+              <div class="carousel-inner relative w-8/12 mx-auto overflow-hidden">
                 <div class="relative carousel-item active float-left w-full cursor-pointer transition duration-700 backdrop">
                   <!-- <img
                   src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
@@ -382,7 +379,7 @@
     <footer class="fixed bottom-0 left-0 right-0 text-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div class="container px-6">
         <div class="flex justify-center">
-          <a href="#!" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <a href="https://www.facebook.com/" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
             <svg aria-hidden="true"
             focusable="false"
             data-prefix="fab"
@@ -399,7 +396,7 @@
             </svg>
           </a>
     
-          <a href="#!" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <a href="https://twitter.com/" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
             <svg aria-hidden="true"
             focusable="false"
             data-prefix="fab"
@@ -416,7 +413,7 @@
             </svg>
           </a>
     
-          <a href="#!" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <a href="https://www.google.co.jp/" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
             <svg aria-hidden="true"
             focusable="false"
             data-prefix="fab"
@@ -433,7 +430,7 @@
             </svg>
           </a>
     
-          <a href="#!" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <a href="https://www.instagram.com/" type="button" class="rounded-full border-2 dark:border-white dark:text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
             <svg aria-hidden="true"
             focusable="false"
             data-prefix="fab"
